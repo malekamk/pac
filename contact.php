@@ -6,12 +6,12 @@
 <title>Contact | PAC Johannesburg Region</title>
 <meta name="description" content="Contact the Pan Africanist Congress of Azania, Johannesburg Region — head office address, phone, email and map.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pacjhb.org.za/contact.php">
+<link rel="canonical" href="https://pacjhb.org.za/contact">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PAC Johannesburg Region">
 <meta property="og:title" content="Contact | PAC Johannesburg Region">
 <meta property="og:description" content="Contact the Pan Africanist Congress of Azania, Johannesburg Region — head office address, phone, email and map.">
-<meta property="og:url" content="https://pacjhb.org.za/contact.php">
+<meta property="og:url" content="https://pacjhb.org.za/contact">
 <meta property="og:image" content="https://pacjhb.org.za/assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contact | PAC Johannesburg Region">
@@ -27,7 +27,7 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="index.php">Home</a> / Contact</p>
+      <p class="breadcrumb"><a href="/">Home</a> / Contact</p>
       <h1>Contact Us</h1>
     </div>
   </section>

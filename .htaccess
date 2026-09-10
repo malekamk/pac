@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Redirect example.com/about.php -> example.com/about (avoids duplicate URLs)
+RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Serve example.com/about as about.php, without exposing the extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^/.]+)$ $1.php [L]
+
+# Never allow .env or other dotfiles to be served
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>

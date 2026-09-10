@@ -6,12 +6,12 @@
 <title>News &amp; Statements | PAC Johannesburg Region</title>
 <meta name="description" content="Latest news, statements and press releases from the Pan Africanist Congress of Azania, Johannesburg Region — including Thami ka Plaatjie's mayoral candidacy and the 2026 Local Government Elections campaign.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pacjhb.org.za/news.php">
+<link rel="canonical" href="https://pacjhb.org.za/news">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PAC Johannesburg Region">
 <meta property="og:title" content="News &amp; Statements | PAC Johannesburg Region">
 <meta property="og:description" content="Latest news, statements and press releases from the Pan Africanist Congress of Azania, Johannesburg Region.">
-<meta property="og:url" content="https://pacjhb.org.za/news.php">
+<meta property="og:url" content="https://pacjhb.org.za/news">
 <meta property="og:image" content="https://pacjhb.org.za/assets/img/apa-pooe.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="News &amp; Statements | PAC Johannesburg Region">
@@ -27,7 +27,7 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="index.php">Home</a> / News &amp; Statements</p>
+      <p class="breadcrumb"><a href="/">Home</a> / News &amp; Statements</p>
       <h1>News &amp; Statements</h1>
     </div>
   </section>

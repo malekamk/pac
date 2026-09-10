@@ -7,55 +7,55 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pacjhb.org.za/about.php</loc>
+    <loc>https://pacjhb.org.za/about</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pacjhb.org.za/leadership.php</loc>
+    <loc>https://pacjhb.org.za/leadership</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pacjhb.org.za/candidates.php</loc>
+    <loc>https://pacjhb.org.za/candidates</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pacjhb.org.za/news.php</loc>
+    <loc>https://pacjhb.org.za/news</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pacjhb.org.za/events.php</loc>
+    <loc>https://pacjhb.org.za/events</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pacjhb.org.za/programmes.php</loc>
+    <loc>https://pacjhb.org.za/programmes</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pacjhb.org.za/membership.php</loc>
+    <loc>https://pacjhb.org.za/membership</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pacjhb.org.za/contact.php</loc>
+    <loc>https://pacjhb.org.za/contact</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pacjhb.org.za/gallery.php</loc>
+    <loc>https://pacjhb.org.za/gallery</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

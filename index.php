@@ -63,8 +63,8 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
       <div class="hero-divider"></div>
       <p class="tagline">Serve &bull; Suffer &bull; Sacrifice</p>
       <div class="hero-ctas">
-        <a href="membership.php" class="btn btn-green">Join PAC &rarr;</a>
-        <a href="programmes.php" class="btn btn-outline">Our Programmes &rarr;</a>
+        <a href="membership" class="btn btn-green">Join PAC &rarr;</a>
+        <a href="programmes" class="btn btn-outline">Our Programmes &rarr;</a>
       </div>
       <p style="margin-top:26px;color:var(--gray-500);font-size:.82rem;letter-spacing:.5px;" data-election-countdown></p>
     </div>
@@ -105,7 +105,7 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
     <div class="container">
       <div class="section-head">
         <h2>Meet Your Ward Candidates</h2>
-        <a href="candidates.php" class="view-all">View All &rarr;</a>
+        <a href="candidates" class="view-all">View All &rarr;</a>
       </div>
       <div class="candidates-grid">
         <?php foreach ($homeCandidates as $c): ?>
@@ -122,7 +122,7 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
     <div class="container">
       <div class="section-head">
         <h2>Latest News &amp; Statements</h2>
-        <a href="news.php" class="view-all">View All &rarr;</a>
+        <a href="news" class="view-all">View All &rarr;</a>
       </div>
       <div class="news-grid">
         <article class="card news-card">
@@ -131,7 +131,7 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
             <span class="meta">03 Aug 2026 &middot; Statement</span>
             <h3>PAC Names Thami ka Plaatjie as Johannesburg Mayoral Candidate</h3>
             <p>The party unveiled the historian and former Secretary-General as its candidate for Executive Mayor, alongside candidates for Ekurhuleni, Emfuleni and Sedibeng.</p>
-            <a href="news.php" class="readmore">Read More &rarr;</a>
+            <a href="news" class="readmore">Read More &rarr;</a>
           </div>
         </article>
         <article class="card news-card">
@@ -140,7 +140,7 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
             <span class="meta">2026 &middot; Statement</span>
             <h3>Ending Maladministration Is Key Focus Ahead of 2026 Elections</h3>
             <p>President Mzwanele Nyhontso says the PAC is mobilising communities as agents of change to end maladministration, poor service delivery and corruption in local councils.</p>
-            <a href="news.php" class="readmore">Read More &rarr;</a>
+            <a href="news" class="readmore">Read More &rarr;</a>
           </div>
         </article>
         <article class="card news-card">
@@ -149,7 +149,7 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
             <span class="meta">2026 &middot; News</span>
             <h3>PAYCO Leads Ground Mobilisation for the Local Elections</h3>
             <p>The Pan Africanist Youth Congress of Azania places young people at the centre of community mobilisation ahead of registration weekends and the 4 November poll.</p>
-            <a href="news.php" class="readmore">Read More &rarr;</a>
+            <a href="news" class="readmore">Read More &rarr;</a>
           </div>
         </article>
       </div>
@@ -160,7 +160,7 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
     <div class="container">
       <div class="section-head">
         <h2>Upcoming Events</h2>
-        <a href="events.php" class="view-all">View All &rarr;</a>
+        <a href="events" class="view-all">View All &rarr;</a>
       </div>
       <div class="events-list">
         <?php foreach ($homeEvents as $row): ?>
@@ -189,7 +189,7 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
       <div class="leadership-panel">
         <div class="leadership-head">
           <span class="eyebrow-green">Our Leadership</span>
-          <a href="leadership.php" class="view-all">View All &rarr;</a>
+          <a href="leadership" class="view-all">View All &rarr;</a>
         </div>
         <div class="leaders-row">
           <div class="leader-item">
@@ -219,7 +219,7 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
         <h2>Become Part of the Movement</h2>
         <p>Your future is in your hands. Join PAC Johannesburg today.</p>
       </div>
-      <a href="membership.php" class="btn btn-gold">Join PAC Today &rarr;</a>
+      <a href="membership" class="btn btn-gold">Join PAC Today &rarr;</a>
     </div>
   </section>
 </main>

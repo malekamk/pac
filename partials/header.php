@@ -14,23 +14,23 @@
 </div>
 <header class="site-header">
   <div class="nav-wrap">
-    <a href="index.php" class="brand">
+    <a href="/" class="brand">
       <img src="assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png" alt="PAC emblem">
       <span class="brand-text"><strong>PAC JOHANNESBURG</strong><span>Pan Africanist Congress</span></span>
     </a>
     <nav class="main-nav" data-nav>
-      <a href="index.php" data-page="home">Home</a>
-      <a href="about.php" data-page="about">About</a>
-      <a href="leadership.php" data-page="leadership">Leadership</a>
-      <a href="candidates.php" data-page="candidates">Candidates</a>
-      <a href="news.php" data-page="news">News &amp; Statements</a>
-      <a href="events.php" data-page="events">Events</a>
-      <a href="programmes.php" data-page="programmes">Programmes</a>
-      <a href="membership.php" data-page="membership">Membership</a>
-      <a href="contact.php" data-page="contact">Contact</a>
+      <a href="/" data-page="home">Home</a>
+      <a href="about" data-page="about">About</a>
+      <a href="leadership" data-page="leadership">Leadership</a>
+      <a href="candidates" data-page="candidates">Candidates</a>
+      <a href="news" data-page="news">News &amp; Statements</a>
+      <a href="events" data-page="events">Events</a>
+      <a href="programmes" data-page="programmes">Programmes</a>
+      <a href="membership" data-page="membership">Membership</a>
+      <a href="contact" data-page="contact">Contact</a>
     </nav>
     <div class="nav-actions">
-      <a href="membership.php" class="btn btn-gold">Join PAC</a>
+      <a href="membership" class="btn btn-gold">Join PAC</a>
       <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu">&#9776;</button>
     </div>
   </div>

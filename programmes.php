@@ -6,12 +6,12 @@
 <title>Programmes | PAC Johannesburg Region</title>
 <meta name="description" content="PAC Johannesburg Region programmes — land restoration, clean local government, PAYCO youth, PAWO women, and 2026 election mobilisation.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pacjhb.org.za/programmes.php">
+<link rel="canonical" href="https://pacjhb.org.za/programmes">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PAC Johannesburg Region">
 <meta property="og:title" content="Programmes | PAC Johannesburg Region">
 <meta property="og:description" content="PAC Johannesburg Region programmes — land restoration, clean local government, PAYCO youth, PAWO women, and 2026 election mobilisation.">
-<meta property="og:url" content="https://pacjhb.org.za/programmes.php">
+<meta property="og:url" content="https://pacjhb.org.za/programmes">
 <meta property="og:image" content="https://pacjhb.org.za/assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Programmes | PAC Johannesburg Region">
@@ -27,7 +27,7 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="index.php">Home</a> / Programmes</p>
+      <p class="breadcrumb"><a href="/">Home</a> / Programmes</p>
       <h1>Our Programmes</h1>
     </div>
   </section>
@@ -72,7 +72,7 @@
   <section class="join-banner">
     <div class="container join-inner">
       <div><h2>Become Part of the Movement</h2><p>Your future is in your hands. Join PAC Johannesburg today.</p></div>
-      <a href="membership.php" class="btn btn-gold">Join PAC Today &rarr;</a>
+      <a href="membership" class="btn btn-gold">Join PAC Today &rarr;</a>
     </div>
   </section>
 </main>

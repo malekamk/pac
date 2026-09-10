@@ -1,3 +1,4 @@
 .env
 /assets/img/uploads/*
 !/assets/img/uploads/.gitkeep
+router.local.php

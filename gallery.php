@@ -6,12 +6,12 @@
 <title>Gallery | PAC Johannesburg Region</title>
 <meta name="description" content="Photo gallery of the Pan Africanist Congress of Azania — historic founders, current leadership and the party emblem.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pacjhb.org.za/gallery.php">
+<link rel="canonical" href="https://pacjhb.org.za/gallery">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PAC Johannesburg Region">
 <meta property="og:title" content="Gallery | PAC Johannesburg Region">
 <meta property="og:description" content="Photo gallery of the Pan Africanist Congress of Azania — historic founders, current leadership and the party emblem.">
-<meta property="og:url" content="https://pacjhb.org.za/gallery.php">
+<meta property="og:url" content="https://pacjhb.org.za/gallery">
 <meta property="og:image" content="https://pacjhb.org.za/assets/img/founding-members-1957.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Gallery | PAC Johannesburg Region">
@@ -27,7 +27,7 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="index.php">Home</a> / Gallery</p>
+      <p class="breadcrumb"><a href="/">Home</a> / Gallery</p>
       <h1>Gallery</h1>
     </div>
   </section>

@@ -14,12 +14,12 @@ foreach ($events as $e) { if ($e['featured']) { $featured = $e; break; } }
 <title>Events | PAC Johannesburg Region</title>
 <meta name="description" content="Upcoming PAC Johannesburg Region events and campaign activities ahead of the 4 November 2026 Local Government Elections.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pacjhb.org.za/events.php">
+<link rel="canonical" href="https://pacjhb.org.za/events">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PAC Johannesburg Region">
 <meta property="og:title" content="Events | PAC Johannesburg Region">
 <meta property="og:description" content="Upcoming PAC Johannesburg Region events and campaign activities ahead of the 4 November 2026 Local Government Elections.">
-<meta property="og:url" content="https://pacjhb.org.za/events.php">
+<meta property="og:url" content="https://pacjhb.org.za/events">
 <meta property="og:image" content="https://pacjhb.org.za/assets/img/thami.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Events | PAC Johannesburg Region">
@@ -35,7 +35,7 @@ foreach ($events as $e) { if ($e['featured']) { $featured = $e; break; } }
 <main>
   <section class="page-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="index.php">Home</a> / Events</p>
+      <p class="breadcrumb"><a href="/">Home</a> / Events</p>
       <h1>Events</h1>
       <p style="margin-top:14px;color:var(--gold);font-weight:700;" data-election-countdown></p>
     </div>
@@ -84,7 +84,7 @@ foreach ($events as $e) { if ($e['featured']) { $featured = $e; break; } }
   <section class="join-banner">
     <div class="container join-inner">
       <div><h2>Become Part of the Movement</h2><p>Your future is in your hands. Join PAC Johannesburg today.</p></div>
-      <a href="membership.php" class="btn btn-gold">Join PAC Today &rarr;</a>
+      <a href="membership" class="btn btn-gold">Join PAC Today &rarr;</a>
     </div>
   </section>
 </main>

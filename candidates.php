@@ -6,12 +6,12 @@
 <title>Ward Candidates | PAC Johannesburg Region</title>
 <meta name="description" content="Meet the Pan Africanist Congress's ward councillor candidates for the 4 November 2026 Johannesburg Local Government Elections.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pacjhb.org.za/candidates.php">
+<link rel="canonical" href="https://pacjhb.org.za/candidates">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PAC Johannesburg Region">
 <meta property="og:title" content="Ward Candidates | PAC Johannesburg Region">
 <meta property="og:description" content="Meet the Pan Africanist Congress's ward councillor candidates for the 4 November 2026 Johannesburg Local Government Elections.">
-<meta property="og:url" content="https://pacjhb.org.za/candidates.php">
+<meta property="og:url" content="https://pacjhb.org.za/candidates">
 <meta property="og:image" content="https://pacjhb.org.za/assets/img/candidate-tsholo-molatlou.jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ward Candidates | PAC Johannesburg Region">
@@ -34,7 +34,7 @@ $candidates = $candidates ? mysqli_fetch_all($candidates, MYSQLI_ASSOC) : [];
 <main>
   <section class="page-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="index.php">Home</a> / Candidates</p>
+      <p class="breadcrumb"><a href="/">Home</a> / Candidates</p>
       <h1>Ward Candidates</h1>
       <p style="margin-top:14px;color:var(--gold);font-weight:700;" data-election-countdown></p>
     </div>
@@ -80,7 +80,7 @@ $candidates = $candidates ? mysqli_fetch_all($candidates, MYSQLI_ASSOC) : [];
   <section class="join-banner">
     <div class="container join-inner">
       <div><h2>Vote PAC on 4 November</h2><p>Let&rsquo;s fix our municipality together. Unity. Dignity. Liberation.</p></div>
-      <a href="membership.php" class="btn btn-gold">Join PAC Today &rarr;</a>
+      <a href="membership" class="btn btn-gold">Join PAC Today &rarr;</a>
     </div>
   </section>
 </main>

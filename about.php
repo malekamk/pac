@@ -6,12 +6,12 @@
 <title>About the PAC | PAC Johannesburg Region</title>
 <meta name="description" content="History of the Pan Africanist Congress of Azania — founding, Sharpeville, exile, and the return to democratic politics.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pacjhb.org.za/about.php">
+<link rel="canonical" href="https://pacjhb.org.za/about">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PAC Johannesburg Region">
 <meta property="og:title" content="About the PAC | PAC Johannesburg Region">
 <meta property="og:description" content="History of the Pan Africanist Congress of Azania — founding, Sharpeville, exile, and the return to democratic politics.">
-<meta property="og:url" content="https://pacjhb.org.za/about.php">
+<meta property="og:url" content="https://pacjhb.org.za/about">
 <meta property="og:image" content="https://pacjhb.org.za/assets/img/founding-members-1957.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About the PAC | PAC Johannesburg Region">
@@ -27,7 +27,7 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="index.php">Home</a> / About</p>
+      <p class="breadcrumb"><a href="/">Home</a> / About</p>
       <h1>About the PAC</h1>
     </div>
   </section>
@@ -81,7 +81,7 @@
   <section class="join-banner">
     <div class="container join-inner">
       <div><h2>Become Part of the Movement</h2><p>Your future is in your hands. Join PAC Johannesburg today.</p></div>
-      <a href="membership.php" class="btn btn-gold">Join PAC Today &rarr;</a>
+      <a href="membership" class="btn btn-gold">Join PAC Today &rarr;</a>
     </div>
   </section>
 </main>

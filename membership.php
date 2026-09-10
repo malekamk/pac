@@ -6,12 +6,12 @@
 <title>Membership | PAC Johannesburg Region</title>
 <meta name="description" content="Join the Pan Africanist Congress of Azania, Johannesburg Region. Serve, Suffer, Sacrifice — become a member today.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pacjhb.org.za/membership.php">
+<link rel="canonical" href="https://pacjhb.org.za/membership">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PAC Johannesburg Region">
 <meta property="og:title" content="Join PAC | PAC Johannesburg Region">
 <meta property="og:description" content="Join the Pan Africanist Congress of Azania, Johannesburg Region. Serve, Suffer, Sacrifice — become a member today.">
-<meta property="og:url" content="https://pacjhb.org.za/membership.php">
+<meta property="og:url" content="https://pacjhb.org.za/membership">
 <meta property="og:image" content="https://pacjhb.org.za/assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Join PAC | PAC Johannesburg Region">
@@ -27,7 +27,7 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="index.php">Home</a> / Membership</p>
+      <p class="breadcrumb"><a href="/">Home</a> / Membership</p>
       <h1>Join PAC</h1>
     </div>
   </section>
