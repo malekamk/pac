@@ -19,7 +19,7 @@ function random_password($length = 10) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (!$amAdmin) {
     $_SESSION['flash'] = 'Only admins can manage users.';
-    header('Location: users.php');
+    header('Location: users');
     exit;
   }
 
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['flash'] = 'Role updated.';
     }
   }
-  header('Location: users.php');
+  header('Location: users');
   exit;
 }
 

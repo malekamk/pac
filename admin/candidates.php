@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['flash'] = 'Candidate updated.';
     }
   }
-  header('Location: candidates.php');
+  header('Location: candidates');
   exit;
 }
 
@@ -68,7 +68,7 @@ include __DIR__ . '/_chrome_top.php';
       <td><?= htmlspecialchars($row['ward'] ?? '') ?></td>
       <td><?= htmlspecialchars($row['role']) ?></td>
       <td class="actions">
-        <a href="candidates.php?edit=<?= (int) $row['id'] ?>">Edit</a>
+        <a href="candidates?edit=<?= (int) $row['id'] ?>">Edit</a>
         <form method="post" onsubmit="return confirm('Remove this candidate?');" style="display:inline;">
           <input type="hidden" name="action" value="delete">
           <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
@@ -111,7 +111,7 @@ include __DIR__ . '/_chrome_top.php';
 
     <div style="display:flex;gap:10px;">
       <button class="btn" type="submit"><?= $editRow ? 'Save Changes' : 'Add Candidate' ?></button>
-      <button type="button" class="btn secondary" onclick="window.location.href='candidates.php'">Cancel</button>
+      <button type="button" class="btn secondary" onclick="window.location.href='candidates'">Cancel</button>
     </div>
   </form>
 </dialog>

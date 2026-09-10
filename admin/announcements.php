@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['flash'] = 'Announcement updated.';
     }
   }
-  header('Location: announcements.php');
+  header('Location: announcements');
   exit;
 }
 
@@ -69,7 +69,7 @@ include __DIR__ . '/_chrome_top.php';
       <td><span class="badge"><?= htmlspecialchars($row['tag']) ?></span></td>
       <td><?= htmlspecialchars($row['published_at'] ? date('d M Y', strtotime($row['published_at'])) : '') ?></td>
       <td class="actions">
-        <a href="announcements.php?edit=<?= (int) $row['id'] ?>">Edit</a>
+        <a href="announcements?edit=<?= (int) $row['id'] ?>">Edit</a>
         <form method="post" onsubmit="return confirm('Delete this announcement?');" style="display:inline;">
           <input type="hidden" name="action" value="delete">
           <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
@@ -116,7 +116,7 @@ include __DIR__ . '/_chrome_top.php';
 
     <div style="display:flex;gap:10px;">
       <button class="btn" type="submit"><?= $editRow ? 'Save Changes' : 'Add Announcement' ?></button>
-      <button type="button" class="btn secondary" onclick="window.location.href='announcements.php'">Cancel</button>
+      <button type="button" class="btn secondary" onclick="window.location.href='announcements'">Cancel</button>
     </div>
   </form>
 </dialog>

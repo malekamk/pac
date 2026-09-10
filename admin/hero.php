@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['flash'] = 'Slide updated.';
     }
   }
-  header('Location: hero.php');
+  header('Location: hero');
   exit;
 }
 
@@ -70,7 +70,7 @@ include __DIR__ . '/_chrome_top.php';
       <td><?= htmlspecialchars($row['alt_text'] ?? '') ?></td>
       <td><?= (int) $row['sort_order'] ?></td>
       <td class="actions">
-        <a href="hero.php?edit=<?= (int) $row['id'] ?>">Edit</a>
+        <a href="hero?edit=<?= (int) $row['id'] ?>">Edit</a>
         <form method="post" onsubmit="return confirm('Remove this slide?');" style="display:inline;">
           <input type="hidden" name="action" value="delete">
           <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
@@ -107,7 +107,7 @@ include __DIR__ . '/_chrome_top.php';
 
     <div style="display:flex;gap:10px;">
       <button class="btn" type="submit"><?= $editRow ? 'Save Changes' : 'Add Slide' ?></button>
-      <button type="button" class="btn secondary" onclick="window.location.href='hero.php'">Cancel</button>
+      <button type="button" class="btn secondary" onclick="window.location.href='hero'">Cancel</button>
     </div>
   </form>
 </dialog>

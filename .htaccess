@@ -1,17 +1,16 @@
 RewriteEngine On
 
 # Redirect example.com/about.php -> example.com/about (avoids duplicate URLs)
-# The admin panel keeps its normal .php URLs — it's nested (admin/login.php)
-# and the rewrite below only maps single-segment paths, so leave it alone.
+# Also covers nested admin URLs, e.g. /admin/events.php -> /admin/events
 RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.php[\s?] [NC]
-RewriteCond %{REQUEST_URI} !^/admin/
 RewriteRule ^ /%1 [R=301,L]
 
-# Serve example.com/about as about.php, without exposing the extension
+# Serve example.com/about as about.php, and example.com/admin/events as
+# admin/events.php, without exposing the extension
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^([^/.]+)$ $1.php [L]
+RewriteRule ^([^.]+)$ $1.php [L]
 
 # Never allow .env or other dotfiles to be served
 <FilesMatch "^\.">

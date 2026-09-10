@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['flash'] = 'Photo updated.';
     }
   }
-  header('Location: gallery.php');
+  header('Location: gallery');
   exit;
 }
 
@@ -72,7 +72,7 @@ include __DIR__ . '/_chrome_top.php';
       <td><span class="badge"><?= htmlspecialchars($row['display_mode']) ?></span></td>
       <td><?= (int) $row['sort_order'] ?></td>
       <td class="actions">
-        <a href="gallery.php?edit=<?= (int) $row['id'] ?>">Edit</a>
+        <a href="gallery?edit=<?= (int) $row['id'] ?>">Edit</a>
         <form method="post" onsubmit="return confirm('Remove this photo?');" style="display:inline;">
           <input type="hidden" name="action" value="delete">
           <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
@@ -120,7 +120,7 @@ include __DIR__ . '/_chrome_top.php';
 
     <div style="display:flex;gap:10px;">
       <button class="btn" type="submit"><?= $editRow ? 'Save Changes' : 'Add Photo' ?></button>
-      <button type="button" class="btn secondary" onclick="window.location.href='gallery.php'">Cancel</button>
+      <button type="button" class="btn secondary" onclick="window.location.href='gallery'">Cancel</button>
     </div>
   </form>
 </dialog>

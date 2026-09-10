@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['flash'] = 'Event updated.';
     }
   }
-  header('Location: events.php');
+  header('Location: events');
   exit;
 }
 
@@ -71,7 +71,7 @@ include __DIR__ . '/_chrome_top.php';
       <td><?= htmlspecialchars(date('d M Y', strtotime($row['event_date']))) ?></td>
       <td><?= htmlspecialchars($row['venue'] ?? '') ?></td>
       <td class="actions">
-        <a href="events.php?edit=<?= (int) $row['id'] ?>">Edit</a>
+        <a href="events?edit=<?= (int) $row['id'] ?>">Edit</a>
         <form method="post" onsubmit="return confirm('Delete this event?');" style="display:inline;">
           <input type="hidden" name="action" value="delete">
           <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
@@ -126,7 +126,7 @@ include __DIR__ . '/_chrome_top.php';
 
     <div style="display:flex;gap:10px;">
       <button class="btn" type="submit"><?= $editRow ? 'Save Changes' : 'Add Event' ?></button>
-      <button type="button" class="btn secondary" onclick="window.location.href='events.php'">Cancel</button>
+      <button type="button" class="btn secondary" onclick="window.location.href='events'">Cancel</button>
     </div>
   </form>
 </dialog>

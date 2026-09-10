@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['admin_name'] = $name;
     if ($uploaded) $_SESSION['admin_image'] = $uploaded;
     $_SESSION['flash'] = 'Profile updated.';
-    header('Location: profile.php');
+    header('Location: profile');
     exit;
   }
 
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       mysqli_stmt_bind_param($stmt, 'si', $hash, $_SESSION['admin_id']);
       mysqli_stmt_execute($stmt);
       $_SESSION['flash'] = 'Password changed.';
-      header('Location: profile.php');
+      header('Location: profile');
       exit;
     }
   }

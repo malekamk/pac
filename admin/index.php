@@ -44,10 +44,10 @@ include __DIR__ . '/_chrome_top.php';
 </section>
 
 <div class="quick-actions">
-  <a href="events.php" class="qa-btn">+ Add Event</a>
-  <a href="announcements.php" class="qa-btn">+ Add Announcement</a>
-  <a href="candidates.php" class="qa-btn">+ Add Candidate</a>
-  <a href="users.php" class="qa-btn qa-btn-ghost">+ Add Team Member</a>
+  <a href="events" class="qa-btn">+ Add Event</a>
+  <a href="announcements" class="qa-btn">+ Add Announcement</a>
+  <a href="candidates" class="qa-btn">+ Add Candidate</a>
+  <a href="users" class="qa-btn qa-btn-ghost">+ Add Team Member</a>
 </div>
 
 <div class="stat-row">
@@ -56,28 +56,28 @@ include __DIR__ . '/_chrome_top.php';
     <div class="n"><?= $eventsCount ?></div>
     <div class="l">Events</div>
     <div class="stat-detail"><?= $nextEvent ? 'Next: ' . htmlspecialchars($nextEvent['title']) . ' — ' . htmlspecialchars(date('d M', strtotime($nextEvent['event_date']))) : 'Nothing scheduled' ?></div>
-    <a href="events.php">Manage &rarr;</a>
+    <a href="events">Manage &rarr;</a>
   </div>
   <div class="stat-card">
     <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
     <div class="n"><?= $announcementsCount ?></div>
     <div class="l">Announcements</div>
     <div class="stat-detail"><?= $latestAnnouncement ? 'Latest: ' . htmlspecialchars($latestAnnouncement['title']) : 'None yet' ?></div>
-    <a href="announcements.php">Manage &rarr;</a>
+    <a href="announcements">Manage &rarr;</a>
   </div>
   <div class="stat-card">
     <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></svg></div>
     <div class="n"><?= $candidatesCount ?></div>
     <div class="l">Ward Candidates</div>
     <div class="stat-detail"><?= $latestCandidate ? 'Newest: ' . htmlspecialchars($latestCandidate['name']) . ($latestCandidate['ward'] ? ' (Ward ' . htmlspecialchars($latestCandidate['ward']) . ')' : '') : 'None yet' ?></div>
-    <a href="candidates.php">Manage &rarr;</a>
+    <a href="candidates">Manage &rarr;</a>
   </div>
   <div class="stat-card">
     <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
     <div class="n"><?= $usersCount ?></div>
     <div class="l">Team Accounts</div>
     <div class="stat-detail">People who can log in here</div>
-    <a href="users.php">Manage &rarr;</a>
+    <a href="users">Manage &rarr;</a>
   </div>
 </div>
 

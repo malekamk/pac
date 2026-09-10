@@ -3,7 +3,7 @@ require __DIR__ . '/../config.php';
 session_start();
 
 if (!empty($_SESSION['admin_id'])) {
-  header('Location: index.php');
+  header('Location: index');
   exit;
 }
 
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['admin_name'] = $admin['name'];
     $_SESSION['admin_role'] = $admin['role'];
     $_SESSION['admin_image'] = $admin['profile_image'];
-    header('Location: index.php');
+    header('Location: index');
     exit;
   }
   $error = 'Incorrect email or password.';
