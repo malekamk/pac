@@ -12,11 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  const siteHeader = document.querySelector('[data-site-header]');
-  if (siteHeader) {
-    const onScroll = () => siteHeader.classList.toggle('is-scrolled', window.scrollY > 12);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
 });
