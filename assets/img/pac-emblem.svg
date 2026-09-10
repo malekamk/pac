@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="98" fill="#0b2e1a" stroke="#e3b23c" stroke-width="3"/>
+  <g stroke="#e3b23c" stroke-width="3">
+    <g id="rays">
+      <line x1="100" y1="100" x2="100" y2="10"/>
+    </g>
+  </g>
+  <g fill="none" stroke="#e3b23c" stroke-width="3">
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(0 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(22.5 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(45 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(67.5 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(90 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(112.5 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(135 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(157.5 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(180 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(202.5 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(225 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(247.5 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(270 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(292.5 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(315 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="14" transform="rotate(337.5 100 100)"/>
+  </g>
+  <circle cx="100" cy="100" r="58" fill="#0b2e1a" stroke="#e3b23c" stroke-width="3"/>
+  <path d="M100 66 L109 92 L137 92 L114 108 L123 134 L100 118 L77 134 L86 108 L63 92 L91 92 Z" fill="#e3b23c"/>
+  <text x="100" y="182" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="700" fill="#e3b23c" letter-spacing="2">PAC</text>
+</svg>
