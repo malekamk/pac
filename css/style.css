@@ -1,37 +1,36 @@
 /* ==========================================================================
    PAC Johannesburg Region — Design System
-   Editorial / institutional direction. Ivory & white dominant, black/green
-   structural, gold reserved for meaning (active states, key CTAs, labels).
+   Original dark PAC palette (black/green/gold), editorial layout and
+   DM Serif Display + Inter typography from the redesign kept throughout.
    ========================================================================== */
 
 :root{
-  /* ---- Colour ---- */
-  --green:       #075B35;
-  --green-dark:  #043A24;
-  --black:       #090B0A;
-  --gold:        #D6A72C;
-  --gold-warm:   #E5C35A;
-  --ivory:       #F5F1E7;
-  --white:       #FFFFFF;
-  --muted:       #6E746F;
+  /* ---- Colour (original PAC theme) ---- */
+  --green:       #0b8f3c;
+  --green-dark:  #063d20;
+  --black:       #07100b;
+  --gold:        #d9a92e;
+  --gold-warm:   #f7d878;
+  --ivory:       #f5f3ec;
+  --white:       #cbd3cd;
+  --muted:       #87958c;
 
-  /* surfaces */
-  --surface:        var(--ivory);
-  --surface-raised:  var(--white);
+  /* surfaces — dark-dominant, matching the original theme */
+  --surface:         var(--black);
+  --surface-raised:  #0b1710;
   --surface-dark:    var(--black);
   --surface-green:   var(--green-dark);
 
-  /* text on light */
-  --ink:        var(--black);
-  --ink-soft:   #33362F;
+  /* text */
+  --ink:        var(--ivory);
+  --ink-soft:   var(--white);
   --ink-muted:  var(--muted);
-  --rule:       rgba(9,11,10,0.12);
-  --rule-strong: rgba(9,11,10,0.22);
+  --rule:       rgba(255,255,255,0.11);
+  --rule-strong: rgba(217,169,46,0.4);
 
-  /* text on dark */
   --ink-on-dark:       var(--ivory);
-  --ink-on-dark-muted: rgba(245,241,231,0.62);
-  --rule-on-dark:      rgba(245,241,231,0.16);
+  --ink-on-dark-muted: rgba(245,243,236,0.65);
+  --rule-on-dark:      rgba(255,255,255,0.14);
 
   /* ---- Type ---- */
   --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
@@ -110,7 +109,7 @@ p.lede{font-size:var(--step-1);color:var(--ink);}
   color:var(--gold-warm);
 }
 .on-dark .label,.section-dark .label{color:var(--gold-warm);}
-.label.on-light{color:#8a6d1c;}
+.label.on-light{color:var(--gold-warm);}
 
 .rule{width:48px;height:2px;background:var(--gold);border:none;margin:18px 0;}
 .rule.center{margin-left:auto;margin-right:auto;}
@@ -357,9 +356,10 @@ footer.site-footer{background:var(--black);color:var(--ink-on-dark-muted);paddin
 .field.full{grid-column:1/-1;}
 .field label{font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
 .field input,.field select,.field textarea{
-  background:var(--surface-raised);border:1px solid var(--rule-strong);border-radius:var(--radius);
+  background:var(--green-dark);border:1px solid var(--rule);border-radius:var(--radius);
   padding:13px 14px;font-size:.95rem;font-family:inherit;color:var(--ink);min-height:48px;
 }
+.field input::placeholder,.field textarea::placeholder{color:var(--muted);}
 .field textarea{min-height:130px;resize:vertical;}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green);outline:none;box-shadow:0 0 0 3px rgba(7,91,53,.12);}
 .form-note{font-size:.8rem;color:var(--muted);margin-top:10px;}
