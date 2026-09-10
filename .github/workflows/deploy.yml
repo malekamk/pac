@@ -20,8 +20,16 @@ jobs:
           password: ${{ secrets.XNEELO_FTP_PASSWORD }}
           protocol: ftps
           server-dir: ${{ secrets.XNEELO_FTP_TARGET_DIR }}
+          # Diffs against this state file on the server so only changed files
+          # transfer on each run, instead of re-uploading the whole site.
+          state-name: .ftp-deploy-sync-state.json
+          log-level: minimal
           exclude: |
             **/.git*
             **/.git*/**
             **/.github/**
             **/node_modules/**
+            **/.env*
+            **/schema.sql
+            **/migrate.php
+            **/README*
