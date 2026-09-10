@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button class="btn" type="submit">Log In</button>
       </form>
     </div>
+    <p class="credit">Built by <a href="https://starapplications.co.za" target="_blank" rel="noopener">StarApplications</a></p>
   </div>
 </body>
 </html>
