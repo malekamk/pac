@@ -7,14 +7,14 @@
   --green-900:#075a2d;
   --green-800:#08733a;
   --green-700:#0a9146;
-  --gold:#d9a92e;
-  --gold-light:#f7d878;
-  --gold-dim:#b58b26;
+  --gold:#0f9e44;
+  --gold-light:#16b954;
+  --gold-dim:#075a2d;
   --cream:#f5f3ec;
   --gray-300:#cbd3cd;
   --gray-500:#87958c;
   --border:rgba(255,255,255,0.11);
-  --border-hover:rgba(217,169,46,0.55);
+  --border-hover:rgba(15,158,68,0.55);
   --radius:12px;
   --red:#e06456;
   font-size:16px;
@@ -75,18 +75,18 @@ h1{font-size:1.6rem;margin:0 0 6px;}
 .hero-panel h1{color:#fff;font-size:1.8rem;margin-bottom:8px;}
 .hero-panel p{color:var(--gray-300);font-size:.92rem;margin:0 0 6px;}
 .hero-panel-countdown{
-  display:inline-block;margin-top:10px;background:rgba(217,169,46,.12);border:1px solid var(--border-hover);
+  display:inline-block;margin-top:10px;background:rgba(15,158,68,.12);border:1px solid var(--border-hover);
   border-radius:20px;padding:6px 16px;font-size:.82rem;font-weight:600;color:var(--gold);
 }
 
 .quick-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px;}
 .qa-btn{
-  background:var(--gold);color:var(--black);padding:10px 18px;min-height:44px;display:inline-flex;align-items:center;
+  background:var(--gold);color:#fff;padding:10px 18px;min-height:44px;display:inline-flex;align-items:center;
   border-radius:4px;font-size:.82rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
 }
 .qa-btn:hover{background:var(--gold-light);text-decoration:none;}
 .qa-btn-ghost{background:transparent;color:var(--gold);border:2px solid var(--gold);}
-.qa-btn-ghost:hover{background:var(--gold);color:var(--black);}
+.qa-btn-ghost:hover{background:var(--gold);color:#fff;}
 
 .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px;}
 .stat-card{background:var(--near-black);border:1px solid var(--border);border-radius:var(--radius);padding:18px 16px;text-align:center;transition:transform .18s,border-color .18s;}
@@ -124,7 +124,7 @@ table.list img.thumb{width:40px;height:40px;object-fit:cover;border-radius:4px;d
 table.list .actions{display:flex;gap:10px;white-space:nowrap;}
 table.list .actions a{color:var(--gold);}
 table.list .actions a.delete, table.list .actions button.delete{color:var(--red);}
-.badge{display:inline-block;background:var(--gold);color:var(--black);font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;}
+.badge{display:inline-block;background:var(--gold);color:#fff;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;}
 
 form.stack{display:flex;flex-direction:column;gap:14px;}
 .field{display:flex;flex-direction:column;gap:5px;}
@@ -143,11 +143,11 @@ form.stack{display:flex;flex-direction:column;gap:14px;}
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   min-height:44px;padding:9px 22px;border-radius:4px;border:2px solid transparent;cursor:pointer;
   font-size:.85rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
-  background:var(--gold);color:var(--black);transition:background .2s ease;
+  background:var(--gold);color:#fff;transition:background .2s ease;
 }
 .btn:hover{background:var(--gold-light);text-decoration:none;}
 .btn.secondary{background:transparent;color:var(--gold);border-color:var(--gold);}
-.btn.secondary:hover{background:var(--gold);color:var(--black);}
+.btn.secondary:hover{background:var(--gold);color:#fff;}
 
 /* ===== Login ===== */
 .login-wrap{
