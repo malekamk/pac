@@ -55,6 +55,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .admin-main{max-width:960px;margin:0 auto;padding:28px 24px 60px;}
 
+@media (max-width:900px){
+  .admin-header{padding:10px 16px;}
+  .admin-nav{
+    width:100%;flex-wrap:nowrap;overflow-x:auto;gap:2px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .admin-nav a{padding:10px 10px;white-space:nowrap;}
+  .admin-main{padding:20px 16px 48px;}
+}
+@media (max-width:480px){
+  .admin-brand{font-size:.92rem;gap:8px;}
+  .admin-brand img{width:40px;height:40px;}
+  table.list tr{padding:12px;}
+  table.list td.actions{flex-basis:100%;margin-left:0;justify-content:flex-end;}
+}
+
 .flash{background:var(--green-950);border:1px solid var(--green-brand);color:var(--cream);padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:.9rem;}
 
 h1{font-size:1.6rem;margin:0 0 6px;}
