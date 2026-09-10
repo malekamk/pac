@@ -15,9 +15,11 @@
   </a>
   <nav class="admin-nav">
     <a href="index.php">Dashboard</a>
+    <a href="hero.php">Hero Carousel</a>
     <a href="events.php">Events</a>
     <a href="announcements.php">Announcements</a>
     <a href="candidates.php">Candidates</a>
+    <a href="gallery.php">Gallery</a>
     <a href="users.php">Users</a>
     <a href="profile.php" style="display:flex;align-items:center;gap:6px;">
       <?php if (!empty($_SESSION['admin_image'])): ?>

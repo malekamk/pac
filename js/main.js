@@ -13,6 +13,46 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(render, 1000 * 60 * 60);
 });
 
+// Homepage hero carousel
+document.addEventListener('DOMContentLoaded', () => {
+  const shell = document.querySelector('[data-hero-carousel]');
+  if (!shell) return;
+  const slides = shell.querySelectorAll('.hero-slide');
+  const dots = shell.querySelectorAll('.hero-dot');
+  if (slides.length < 2) return;
+
+  let index = 0;
+  let timer;
+
+  const show = (next) => {
+    slides[index].classList.remove('active');
+    dots[index] && dots[index].classList.remove('active');
+    index = (next + slides.length) % slides.length;
+    slides[index].classList.add('active');
+    dots[index] && dots[index].classList.add('active');
+  };
+  const start = () => { timer = setInterval(() => show(index + 1), 6000); };
+  const stop = () => clearInterval(timer);
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      show(Number(dot.dataset.index));
+      stop();
+      start();
+    });
+  });
+
+  const prevBtn = shell.querySelector('[data-hero-prev]');
+  const nextBtn = shell.querySelector('[data-hero-next]');
+  const advance = (delta) => { show(index + delta); stop(); start(); };
+  prevBtn && prevBtn.addEventListener('click', () => advance(-1));
+  nextBtn && nextBtn.addEventListener('click', () => advance(1));
+
+  shell.addEventListener('mouseenter', stop);
+  shell.addEventListener('mouseleave', start);
+  start();
+});
+
 // Membership / contact form: static-site friendly mailto handoff
 document.addEventListener('submit', (e) => {
   const form = e.target.closest('form[data-mailto]');

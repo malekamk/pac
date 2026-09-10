@@ -1,7 +1,13 @@
 <?php
 require __DIR__ . '/config.php';
 $conn = db();
-$latestAnnouncement = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM announcements ORDER BY published_at DESC, id DESC LIMIT 1"));
+$heroSlides = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM hero_slides ORDER BY sort_order ASC, id ASC"), MYSQLI_ASSOC);
+if (!$heroSlides) {
+  $heroSlides = [['image' => 'assets/img/pac-crowd-flag-banner.jpg', 'alt_text' => 'PAC Johannesburg Region']];
+}
+$newsItems = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM announcements ORDER BY published_at DESC, id DESC LIMIT 4"), MYSQLI_ASSOC);
+$featuredNews = $newsItems[0] ?? null;
+$secondaryNews = array_slice($newsItems, 1);
 $homeCandidates = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM candidates ORDER BY id ASC LIMIT 3"), MYSQLI_ASSOC);
 $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER BY event_date ASC LIMIT 4"), MYSQLI_ASSOC);
 ?>
@@ -47,7 +53,7 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
     "addressRegion": "Gauteng",
     "addressCountry": "ZA"
   },
-  "email": "admin@pacofazania.org.za",
+  "email": "admin@pacjhb.org.za",
   "telephone": "+27614815677"
 }
 </script>
@@ -58,15 +64,24 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
 
 <main>
   <section class="hero">
-    <div class="container hero-inner">
-      <h1>Pan Africanist<br>Congress of Azania<span class="accent">Johannesburg Region</span></h1>
-      <div class="hero-divider"></div>
-      <p class="tagline">Serve &bull; Suffer &bull; Sacrifice</p>
-      <div class="hero-ctas">
-        <a href="membership" class="btn btn-green">Join PAC &rarr;</a>
-        <a href="programmes" class="btn btn-outline">Our Programmes &rarr;</a>
+    <div class="container">
+      <div class="hero-shell" data-hero-carousel>
+        <div class="hero-slides">
+          <?php foreach ($heroSlides as $i => $slide): ?>
+          <div class="hero-slide<?= $i === 0 ? ' active' : '' ?>" style="background-image:url('<?= htmlspecialchars($slide['image']) ?>')" role="img" aria-label="<?= htmlspecialchars($slide['alt_text'] ?: 'PAC Johannesburg Region') ?>"></div>
+          <?php endforeach; ?>
+        </div>
+        <div class="hero-overlay"></div>
+        <?php if (count($heroSlides) > 1): ?>
+        <button type="button" class="hero-arrow hero-arrow-prev" data-hero-prev aria-label="Previous slide">&lsaquo;</button>
+        <button type="button" class="hero-arrow hero-arrow-next" data-hero-next aria-label="Next slide">&rsaquo;</button>
+        <div class="hero-dots">
+          <?php foreach ($heroSlides as $i => $slide): ?>
+          <button type="button" class="hero-dot<?= $i === 0 ? ' active' : '' ?>" data-index="<?= $i ?>" aria-label="Show slide <?= $i + 1 ?>"></button>
+          <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
       </div>
-      <p style="margin-top:26px;color:var(--gray-500);font-size:.82rem;letter-spacing:.5px;" data-election-countdown></p>
     </div>
   </section>
 
@@ -85,27 +100,50 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
     </div>
   </section>
 
+  <?php if ($featuredNews): ?>
   <section class="section section-tight">
     <div class="container">
-      <?php if ($latestAnnouncement): ?>
-      <span class="eyebrow">Announcements</span>
-      <div class="announcement-banner">
-        <?php if ($latestAnnouncement['image']): ?><img src="<?= htmlspecialchars($latestAnnouncement['image']) ?>" alt="<?= htmlspecialchars($latestAnnouncement['title']) ?>"><?php endif; ?>
-        <div>
-          <span class="tag"><?= htmlspecialchars($latestAnnouncement['tag']) ?></span>
-          <h2><?= htmlspecialchars($latestAnnouncement['title']) ?></h2>
-          <?php if ($latestAnnouncement['body']): ?><p><?= nl2br(htmlspecialchars($latestAnnouncement['body'])) ?></p><?php endif; ?>
-        </div>
+      <div class="section-head">
+        <span class="dot"></span>
+        <h2>Latest News</h2>
+        <span class="rule"></span>
+        <a href="news" class="pill-btn">View All &rarr;</a>
       </div>
-      <?php endif; ?>
+      <div class="feature-split">
+        <div class="feature-main">
+          <?php if ($featuredNews['image']): ?><div class="thumb"><img src="<?= htmlspecialchars($featuredNews['image']) ?>" alt="<?= htmlspecialchars($featuredNews['title']) ?>"></div><?php endif; ?>
+          <div class="feature-main-body">
+            <h3><?= htmlspecialchars($featuredNews['title']) ?></h3>
+            <?php if ($featuredNews['published_at']): ?><p class="published"><strong>Published:</strong> <span class="value"><?= htmlspecialchars(date('d F Y', strtotime($featuredNews['published_at']))) ?></span></p><?php endif; ?>
+            <?php if ($featuredNews['body']): ?><p class="excerpt"><?= htmlspecialchars(mb_strimwidth($featuredNews['body'], 0, 160, '…')) ?></p><?php endif; ?>
+            <span class="pill-badge"><?= htmlspecialchars($featuredNews['tag']) ?></span>
+          </div>
+        </div>
+        <?php if ($secondaryNews): ?>
+        <div class="feature-list">
+          <?php foreach ($secondaryNews as $n): ?>
+          <div class="feature-list-row">
+            <?php if ($n['image']): ?><div class="thumb"><img src="<?= htmlspecialchars($n['image']) ?>" alt=""></div><?php endif; ?>
+            <div>
+              <div class="meta"><?= htmlspecialchars($n['tag']) ?><?= $n['published_at'] ? ' &middot; ' . htmlspecialchars(date('d M', strtotime($n['published_at']))) : '' ?></div>
+              <h4><?= htmlspecialchars($n['title']) ?></h4>
+            </div>
+          </div>
+          <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+      </div>
     </div>
   </section>
+  <?php endif; ?>
 
   <section class="section section-tight" style="background:var(--near-black);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="section-head">
+        <span class="dot"></span>
         <h2>Meet Your Ward Candidates</h2>
-        <a href="candidates" class="view-all">View All &rarr;</a>
+        <span class="rule"></span>
+        <a href="candidates" class="pill-btn">View All &rarr;</a>
       </div>
       <div class="candidates-grid">
         <?php foreach ($homeCandidates as $c): ?>
@@ -118,49 +156,14 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
     </div>
   </section>
 
-  <section class="section section-tight" style="background:var(--green-950);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="container">
-      <div class="section-head">
-        <h2>Latest News &amp; Statements</h2>
-        <a href="news" class="view-all">View All &rarr;</a>
-      </div>
-      <div class="news-grid">
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/founding-members-1957.jpg" alt="PAC statement"></div>
-          <div class="body">
-            <span class="meta">03 Aug 2026 &middot; Statement</span>
-            <h3>PAC Names Thami ka Plaatjie as Johannesburg Mayoral Candidate</h3>
-            <p>The party unveiled the historian and former Secretary-General as its candidate for Executive Mayor, alongside candidates for Ekurhuleni, Emfuleni and Sedibeng.</p>
-            <a href="news" class="readmore">Read More &rarr;</a>
-          </div>
-        </article>
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/rsa-1994-pac-map.png" alt="PAC election focus"></div>
-          <div class="body">
-            <span class="meta">2026 &middot; Statement</span>
-            <h3>Ending Maladministration Is Key Focus Ahead of 2026 Elections</h3>
-            <p>President Mzwanele Nyhontso says the PAC is mobilising communities as agents of change to end maladministration, poor service delivery and corruption in local councils.</p>
-            <a href="news" class="readmore">Read More &rarr;</a>
-          </div>
-        </article>
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/sobukwe-leballo.jpg" alt="PAC youth mobilisation"></div>
-          <div class="body">
-            <span class="meta">2026 &middot; News</span>
-            <h3>PAYCO Leads Ground Mobilisation for the Local Elections</h3>
-            <p>The Pan Africanist Youth Congress of Azania places young people at the centre of community mobilisation ahead of registration weekends and the 4 November poll.</p>
-            <a href="news" class="readmore">Read More &rarr;</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <section class="section">
     <div class="container">
       <div class="section-head">
+        <span class="dot"></span>
         <h2>Upcoming Events</h2>
-        <a href="events" class="view-all">View All &rarr;</a>
+        <span class="rule"></span>
+        <a href="events" class="pill-btn">View All &rarr;</a>
       </div>
       <div class="events-list">
         <?php foreach ($homeEvents as $row): ?>
@@ -184,44 +187,6 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
     </div>
   </section>
 
-  <section class="section section-tight">
-    <div class="container">
-      <div class="leadership-panel">
-        <div class="leadership-head">
-          <span class="eyebrow-green">Our Leadership</span>
-          <a href="leadership" class="view-all">View All &rarr;</a>
-        </div>
-        <div class="leaders-row">
-          <div class="leader-item">
-            <div class="avatar"><img src="assets/img/thami.jpg" alt="Thami ka Plaatjie"></div>
-            <div class="info"><h3>Thami ka Plaatjie</h3><div class="role">JHB Mayoral Candidate</div></div>
-          </div>
-          <div class="leader-item">
-            <div class="avatar"><img src="assets/img/nyhontso-sabc.png" alt="Mzwanele Nyhontso"></div>
-            <div class="info"><h3>Mzwanele Nyhontso</h3><div class="role">President</div></div>
-          </div>
-          <div class="leader-item">
-            <div class="avatar"><img src="assets/img/apa-pooe.jpg" alt="Ntsiri Apa Pooe"></div>
-            <div class="info"><h3>Ntsiri &ldquo;Apa&rdquo; Pooe</h3><div class="role">Secretary-General</div></div>
-          </div>
-          <div class="leader-item">
-            <div class="avatar">JS</div>
-            <div class="info"><h3>Jackie Seroke</h3><div class="role">Deputy President</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="join-banner">
-    <div class="container join-inner">
-      <div>
-        <h2>Become Part of the Movement</h2>
-        <p>Your future is in your hands. Join PAC Johannesburg today.</p>
-      </div>
-      <a href="membership" class="btn btn-gold">Join PAC Today &rarr;</a>
-    </div>
-  </section>
 </main>
 
 <?php include 'partials/footer.php'; ?>

@@ -1,3 +1,12 @@
+<?php
+require __DIR__ . '/config.php';
+$conn = db();
+$newsItems = mysqli_query($conn, "SELECT * FROM announcements ORDER BY published_at DESC, id DESC");
+$newsItems = $newsItems ? mysqli_fetch_all($newsItems, MYSQLI_ASSOC) : [];
+$featuredNews = $newsItems[0] ?? null;
+$secondaryNews = array_slice($newsItems, 1, 3);
+$restNews = array_slice($newsItems, 4);
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -32,76 +41,68 @@
     </div>
   </section>
 
-  <section class="section">
+  <?php if ($featuredNews): ?>
+  <section class="section section-tight">
     <div class="container">
-      <div class="news-grid">
-
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/apa-pooe.jpg" alt="Secretary-General Apa Pooe"></div>
-          <div class="body">
-            <span class="meta">03 Aug 2026 &middot; Statement</span>
-            <h3>PAC Announces Thami ka Plaatjie as Johannesburg Mayoral Candidate</h3>
-            <p>At a media briefing, the PAC confirmed former ANC member and historian Thami ka Plaatjie &mdash; who officially rejoined the party on the day &mdash; as its candidate for Executive Mayor of Johannesburg. Victor Serakalala (Ekurhuleni), Apa Pooe (Emfuleni) and Mbuyiselo Kantso (Sedibeng) were announced as mayoral candidates for their respective municipalities. Secretary-General Pooe said the campaign aims &ldquo;to bring an era of neglect, corruption, political patronage and arrogance to an end.&rdquo;</p>
+      <div class="feature-split">
+        <div class="feature-main">
+          <?php if ($featuredNews['image']): ?><div class="thumb"><img src="<?= htmlspecialchars($featuredNews['image']) ?>" alt="<?= htmlspecialchars($featuredNews['title']) ?>"></div><?php endif; ?>
+          <div class="feature-main-body">
+            <h3><?= htmlspecialchars($featuredNews['title']) ?></h3>
+            <?php if ($featuredNews['published_at']): ?><p class="published"><strong>Published:</strong> <span class="value"><?= htmlspecialchars(date('d F Y', strtotime($featuredNews['published_at']))) ?></span></p><?php endif; ?>
+            <?php if ($featuredNews['body']): ?><p class="excerpt"><?= htmlspecialchars(mb_strimwidth($featuredNews['body'], 0, 160, '…')) ?></p><?php endif; ?>
+            <span class="pill-badge"><?= htmlspecialchars($featuredNews['tag']) ?></span>
           </div>
-        </article>
-
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/announcement-thami-enca-interview.jpeg" alt="Interview Alert: Cde Thami ka Plaatjie live on eNCA"></div>
-          <div class="body">
-            <span class="meta">07 Aug 2026 &middot; Media</span>
-            <h3>Thami ka Plaatjie Live on eNCA: &ldquo;A Vision to Bring Johannesburg to Its Glory&rdquo;</h3>
-            <p>PAC Johannesburg Mayoral Candidate Cde Thami ka Plaatjie appeared live on eNCA (Channel 403) with Nicholas Maphopha, setting out his plan for principled leadership, accountable governance and people-centred service delivery in the City. Secure Joburg. Empower the City.</p>
+        </div>
+        <?php if ($secondaryNews): ?>
+        <div class="feature-list">
+          <?php foreach ($secondaryNews as $n): ?>
+          <div class="feature-list-row">
+            <?php if ($n['image']): ?><div class="thumb"><img src="<?= htmlspecialchars($n['image']) ?>" alt=""></div><?php endif; ?>
+            <div>
+              <div class="meta"><?= htmlspecialchars($n['tag']) ?><?= $n['published_at'] ? ' &middot; ' . htmlspecialchars(date('d M', strtotime($n['published_at']))) : '' ?></div>
+              <h4><?= htmlspecialchars($n['title']) ?></h4>
+            </div>
           </div>
-        </article>
-
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/nyhontso-president.jpeg" alt="President Mzwanele Nyhontso"></div>
-          <div class="body">
-            <span class="meta">2026 &middot; Statement</span>
-            <h3>Ending Maladministration Is Key Focus Ahead of 2026 Local Elections</h3>
-            <p>PAC President Mzwanele Nyhontso has declared 2026 &ldquo;the year of stability, continuity and growth&rdquo; for the party, mandating leadership to mobilise communities &mdash; particularly where the majority of African people reside &mdash; to end maladministration, poor service delivery and corruption in local councils.</p>
-          </div>
-        </article>
-
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/sobukwe-leballo.jpg" alt=""></div>
-          <div class="body">
-            <span class="meta">2026 &middot; News</span>
-            <h3>PAYCO Puts Youth at the Centre of Election Mobilisation</h3>
-            <p>The Pan Africanist Youth Congress of Azania says young people are the driving force behind the party&rsquo;s future, and will lead ground mobilisation ahead of voter registration weekends and the 4 November poll &mdash; championing land restoration, economic justice and African unity.</p>
-          </div>
-        </article>
-
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/founding-members-1957.jpg" alt=""></div>
-          <div class="body">
-            <span class="meta">2026 &middot; Statement</span>
-            <h3>Road to the 2026 Local Government Elections</h3>
-            <p>The Electoral Commission has launched the 2026 Local Government Elections campaign, with President Cyril Ramaphosa proclaiming 4 November 2026 as election day. The PAC has stood up provincial, regional and municipal election strategy centres, including in Johannesburg.</p>
-          </div>
-        </article>
-
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/nyhontso-sabc.png" alt="Mzwanele Nyhontso"></div>
-          <div class="body">
-            <span class="meta">Dec 2025 &middot; News</span>
-            <h3>Mzwanele Nyhontso Re-elected PAC President Unopposed</h3>
-            <p>Nyhontso, who also serves as Minister of Land Reform and Rural Development in the Government of National Unity, was returned as PAC President unopposed, alongside a renewed National Executive Committee.</p>
-          </div>
-        </article>
-
-        <article class="card news-card">
-          <div class="thumb"><img src="assets/img/sobukwe-leballo.jpg" alt=""></div>
-          <div class="body">
-            <span class="meta">2026 &middot; Statement</span>
-            <h3>Renewed Calls for Sobukwe&rsquo;s Grave to Be Declared a National Heritage Site</h3>
-            <p>Civil society and Pan Africanist voices have renewed calls for the grave of founding president Robert Mangaliso Sobukwe to receive formal national memorial status, honouring his role in the liberation struggle.</p>
-          </div>
-        </article>
-
+          <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
       </div>
     </div>
   </section>
+  <?php endif; ?>
+
+  <?php if ($restNews): ?>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="dot"></span>
+        <h2>More News</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="news-grid">
+        <?php foreach ($restNews as $item): ?>
+        <article class="card news-card">
+          <?php if ($item['image']): ?><div class="thumb"><img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['title']) ?>"></div><?php endif; ?>
+          <div class="body">
+            <div class="meta"><?= htmlspecialchars($item['tag']) ?><?= $item['published_at'] ? ' &middot; ' . htmlspecialchars(date('d M Y', strtotime($item['published_at']))) : '' ?></div>
+            <h3><?= htmlspecialchars($item['title']) ?></h3>
+            <?php if ($item['body']): ?><p><?= htmlspecialchars(mb_strimwidth($item['body'], 0, 160, '…')) ?></p><?php endif; ?>
+          </div>
+        </article>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
+  <?php endif; ?>
+
+  <?php if (!$newsItems): ?>
+  <section class="section">
+    <div class="container">
+      <p class="form-note">No news items yet — check back soon.</p>
+    </div>
+  </section>
+  <?php endif; ?>
 </main>
 
 <?php include 'partials/footer.php'; ?>

@@ -47,7 +47,7 @@
         <p class="form-note">Prefer to join in person? Visit the head office at Khotso House, 62 Marshal Street, Johannesburg, or call <a href="tel:+27614815677" style="color:var(--gold);">+27 61 481 5677</a>.</p>
       </div>
 
-      <form class="card-form" data-mailto="admin@pacofazania.org.za" data-subject="PAC Johannesburg — New Membership Application">
+      <form class="card-form" data-mailto="admin@pacjhb.org.za" data-subject="PAC Johannesburg — New Membership Application">
         <div class="form-row">
           <div class="field"><label for="fname">First Name</label><input id="fname" name="First Name" required></div>
           <div class="field"><label for="lname">Surname</label><input id="lname" name="Surname" required></div>

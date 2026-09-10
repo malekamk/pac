@@ -1,3 +1,9 @@
+<?php
+require __DIR__ . '/config.php';
+$conn = db();
+$galleryImages = mysqli_query($conn, "SELECT * FROM gallery_images ORDER BY sort_order ASC, id ASC");
+$galleryImages = $galleryImages ? mysqli_fetch_all($galleryImages, MYSQLI_ASSOC) : [];
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,27 +41,17 @@
   <section class="section">
     <div class="container">
       <div class="gallery-grid">
+        <?php foreach ($galleryImages as $img): ?>
+        <?php if ($img['display_mode'] === 'pattern'): ?>
+        <div class="gallery-item pattern"><img src="<?= htmlspecialchars($img['image']) ?>" alt="<?= htmlspecialchars($img['caption'] ?? 'PAC emblem') ?>" style="width:140px;height:auto;"></div>
+        <?php else: ?>
         <div class="gallery-item">
-          <img src="assets/img/founding-members-1957.jpg" alt="Founding members of the PAC">
-          <div class="cap">Robert Sobukwe with fellow founding members, 1957. Public domain.</div>
+          <img src="<?= htmlspecialchars($img['image']) ?>" alt="<?= htmlspecialchars($img['caption'] ?? '') ?>"<?= $img['display_mode'] === 'contain' ? ' style="background:#fff;object-fit:contain;"' : '' ?>>
+          <?php if ($img['caption']): ?><div class="cap"><?= htmlspecialchars($img['caption']) ?></div><?php endif; ?>
         </div>
-        <div class="gallery-item">
-          <img src="assets/img/sobukwe-leballo.jpg" alt="Sobukwe and Leballo">
-          <div class="cap">Sobukwe (left) with Potlako Leballo, before 21 March 1960. Public domain.</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/img/rsa-1994-pac-map.png" alt="1994 election map" style="background:#fff;object-fit:contain;">
-          <div class="cap">PAC vote share, 1994 election. CC BY-SA 4.0, Tomislav Addai.</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/img/nyhontso-president.jpeg" alt="President Mzwanele Nyhontso at the launch of Sobukwe Month">
-          <div class="cap">President Mzwanele Nyhontso at the launch of Sobukwe Month. PAC of Azania.</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/img/apa-pooe.jpg" alt="Secretary-General Ntsiri Apa Pooe">
-          <div class="cap">Secretary-General Ntsiri &ldquo;Apa&rdquo; Pooe. PAC of Azania.</div>
-        </div>
-        <div class="gallery-item pattern"><img src="assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png" alt="PAC emblem" style="width:140px;height:auto;"></div>
+        <?php endif; ?>
+        <?php endforeach; ?>
+        <?php if (!$galleryImages): ?><p class="form-note">Photos will be added here soon.</p><?php endif; ?>
       </div>
     </div>
   </section>

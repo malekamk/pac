@@ -40,6 +40,23 @@ CREATE TABLE IF NOT EXISTS candidates (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS hero_slides (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  image VARCHAR(255) NOT NULL,
+  alt_text VARCHAR(255),
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS gallery_images (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  image VARCHAR(255) NOT NULL,
+  caption VARCHAR(255),
+  display_mode ENUM('cover','contain','pattern') NOT NULL DEFAULT 'cover',
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- Initial admin login: admin@pacjhb.org.za / PacJhb2026!  (change after first login)
 INSERT INTO admins (name, email, password_hash, role) VALUES
 ('PAC Johannesburg Admin', 'admin@pacjhb.org.za', '$2y$12$fh10vbYjCydo7auus3zsK.Idk2ICSlsa0TcP3cJD5Duq7uRBfMvtu', 'admin');
@@ -64,3 +81,14 @@ INSERT INTO candidates (name, ward, role, image) VALUES
 ('Thabisa Jonas', '100', 'Councillor Candidate', 'assets/img/candidate-thabisa-jonas.jpeg'),
 ('Ntombi Mtshali', '19', 'Councillor Candidate', 'assets/img/candidate-ntombi-mtshali.jpeg'),
 ('Tsholo Molatlou', '39', 'Councillor Candidate', 'assets/img/candidate-tsholo-molatlou.jpeg');
+
+INSERT INTO hero_slides (image, alt_text, sort_order) VALUES
+('assets/img/hero-pac-flags-crowd.png', 'PAC supporters marching with party flags, Johannesburg skyline behind them', 1);
+
+INSERT INTO gallery_images (image, caption, display_mode, sort_order) VALUES
+('assets/img/founding-members-1957.jpg', 'Robert Sobukwe with fellow founding members, 1957. Public domain.', 'cover', 1),
+('assets/img/sobukwe-leballo.jpg', 'Sobukwe (left) with Potlako Leballo, before 21 March 1960. Public domain.', 'cover', 2),
+('assets/img/rsa-1994-pac-map.png', 'PAC vote share, 1994 election. CC BY-SA 4.0, Tomislav Addai.', 'contain', 3),
+('assets/img/nyhontso-president.jpeg', 'President Mzwanele Nyhontso at the launch of Sobukwe Month. PAC of Azania.', 'cover', 4),
+('assets/img/apa-pooe.jpg', 'Secretary-General Ntsiri "Apa" Pooe. PAC of Azania.', 'cover', 5),
+('assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png', NULL, 'pattern', 6);

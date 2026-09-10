@@ -46,7 +46,7 @@
           </div>
           <div class="contact-info-item">
             <span class="ic">&#9993;</span>
-            <div><strong>Email</strong><a href="mailto:admin@pacofazania.org.za">admin@pacofazania.org.za</a></div>
+            <div><strong>Email</strong><a href="mailto:admin@pacjhb.org.za">admin@pacjhb.org.za</a></div>
           </div>
           <div class="contact-info-item">
             <span class="ic">&#128279;</span>
@@ -60,7 +60,7 @@
         </div>
       </div>
 
-      <form class="card-form" data-mailto="admin@pacofazania.org.za" data-subject="PAC Johannesburg — Website Enquiry">
+      <form class="card-form" data-mailto="admin@pacjhb.org.za" data-subject="PAC Johannesburg — Website Enquiry">
         <div class="form-row">
           <div class="field full"><label for="cname">Full Name</label><input id="cname" name="Name" required></div>
         </div>

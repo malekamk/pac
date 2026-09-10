@@ -44,6 +44,23 @@ $tables = [
     image VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
+
+  'hero_slides' => "CREATE TABLE IF NOT EXISTS hero_slides (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image VARCHAR(255) NOT NULL,
+    alt_text VARCHAR(255),
+    sort_order INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
+
+  'gallery_images' => "CREATE TABLE IF NOT EXISTS gallery_images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image VARCHAR(255) NOT NULL,
+    caption VARCHAR(255),
+    display_mode ENUM('cover','contain','pattern') NOT NULL DEFAULT 'cover',
+    sort_order INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
 ];
 
 foreach ($tables as $name => $sql) {
@@ -121,6 +138,36 @@ if (count_rows($conn, 'candidates') === 0) {
   echo "[seed] " . count($candidates) . " candidates inserted\n";
 } else {
   echo "[skip] candidates already seeded\n";
+}
+
+if (count_rows($conn, 'hero_slides') === 0) {
+  $stmt = mysqli_prepare($conn, "INSERT INTO hero_slides (image, alt_text, sort_order) VALUES (?, ?, 1)");
+  $image = 'assets/img/hero-pac-flags-crowd.png';
+  $alt = 'PAC supporters marching with party flags, Johannesburg skyline behind them';
+  mysqli_stmt_bind_param($stmt, 'ss', $image, $alt);
+  mysqli_stmt_execute($stmt);
+  echo "[seed] 1 hero slide inserted\n";
+} else {
+  echo "[skip] hero_slides already seeded\n";
+}
+
+if (count_rows($conn, 'gallery_images') === 0) {
+  $images = [
+    ['assets/img/founding-members-1957.jpg', 'Robert Sobukwe with fellow founding members, 1957. Public domain.', 'cover', 1],
+    ['assets/img/sobukwe-leballo.jpg', 'Sobukwe (left) with Potlako Leballo, before 21 March 1960. Public domain.', 'cover', 2],
+    ['assets/img/rsa-1994-pac-map.png', 'PAC vote share, 1994 election. CC BY-SA 4.0, Tomislav Addai.', 'contain', 3],
+    ['assets/img/nyhontso-president.jpeg', 'President Mzwanele Nyhontso at the launch of Sobukwe Month. PAC of Azania.', 'cover', 4],
+    ['assets/img/apa-pooe.jpg', 'Secretary-General Ntsiri "Apa" Pooe. PAC of Azania.', 'cover', 5],
+    ['assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png', null, 'pattern', 6],
+  ];
+  $stmt = mysqli_prepare($conn, "INSERT INTO gallery_images (image, caption, display_mode, sort_order) VALUES (?, ?, ?, ?)");
+  foreach ($images as $img) {
+    mysqli_stmt_bind_param($stmt, 'sssi', $img[0], $img[1], $img[2], $img[3]);
+    mysqli_stmt_execute($stmt);
+  }
+  echo "[seed] " . count($images) . " gallery images inserted\n";
+} else {
+  echo "[skip] gallery_images already seeded\n";
 }
 
 echo "Migration complete.\n";
