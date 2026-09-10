@@ -3,7 +3,12 @@
   --border:#e2e2e2; --bg:#f6f7f5; --card:#ffffff; --red:#c0392b;
 }
 *{box-sizing:border-box;}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Segoe UI',Arial,sans-serif;font-size:15px;}
+body{
+  margin:0;color:var(--ink);font-family:'Segoe UI',Arial,sans-serif;font-size:15px;
+  background:
+    linear-gradient(180deg, rgba(246,247,245,.94), rgba(246,247,245,.97)),
+    url("../assets/img/pac-crowd-flag-banner.jpg") center 35% / cover no-repeat fixed;
+}
 a{color:var(--green);text-decoration:none;}
 a:hover{text-decoration:underline;}
 
