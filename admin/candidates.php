@@ -55,7 +55,36 @@ include __DIR__ . '/_chrome_top.php';
 <p class="subtitle">Shown on the public Candidates page and the homepage ward candidates strip.</p>
 
 <div class="panel">
-  <h2><?= $editRow ? 'Edit Candidate' : 'Add Candidate' ?></h2>
+  <div class="panel-head">
+    <h2>All Candidates</h2>
+    <button type="button" class="btn" onclick="document.getElementById('candidateModal').showModal()">+ Add Candidate</button>
+  </div>
+  <table class="list">
+    <tr><th></th><th>Name</th><th>Ward</th><th>Role</th><th></th></tr>
+    <?php while ($row = mysqli_fetch_assoc($rows)): ?>
+    <tr>
+      <td><?php if ($row['image']): ?><img class="thumb" src="../<?= htmlspecialchars($row['image']) ?>" alt=""><?php endif; ?></td>
+      <td><?= htmlspecialchars($row['name']) ?></td>
+      <td><?= htmlspecialchars($row['ward'] ?? '') ?></td>
+      <td><?= htmlspecialchars($row['role']) ?></td>
+      <td class="actions">
+        <a href="candidates.php?edit=<?= (int) $row['id'] ?>">Edit</a>
+        <form method="post" onsubmit="return confirm('Remove this candidate?');" style="display:inline;">
+          <input type="hidden" name="action" value="delete">
+          <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
+          <button type="submit" class="delete" style="background:none;border:none;padding:0;font:inherit;cursor:pointer;">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <?php endwhile; ?>
+  </table>
+</div>
+
+<dialog id="candidateModal" class="modal">
+  <div class="modal-head">
+    <h2><?= $editRow ? 'Edit Candidate' : 'Add Candidate' ?></h2>
+    <button type="button" class="modal-close" onclick="document.getElementById('candidateModal').close()" aria-label="Close">&times;</button>
+  </div>
   <form class="stack" method="post" enctype="multipart/form-data">
     <input type="hidden" name="action" value="<?= $editRow ? 'update' : 'create' ?>">
     <?php if ($editRow): ?><input type="hidden" name="id" value="<?= (int) $editRow['id'] ?>"><?php endif; ?>
@@ -82,31 +111,13 @@ include __DIR__ . '/_chrome_top.php';
 
     <div style="display:flex;gap:10px;">
       <button class="btn" type="submit"><?= $editRow ? 'Save Changes' : 'Add Candidate' ?></button>
-      <?php if ($editRow): ?><a class="btn secondary" href="candidates.php">Cancel</a><?php endif; ?>
+      <button type="button" class="btn secondary" onclick="window.location.href='candidates.php'">Cancel</button>
     </div>
   </form>
-</div>
+</dialog>
 
-<div class="panel">
-  <h2>All Candidates</h2>
-  <table class="list">
-    <tr><th></th><th>Name</th><th>Ward</th><th>Role</th><th></th></tr>
-    <?php while ($row = mysqli_fetch_assoc($rows)): ?>
-    <tr>
-      <td><?php if ($row['image']): ?><img class="thumb" src="../<?= htmlspecialchars($row['image']) ?>" alt=""><?php endif; ?></td>
-      <td><?= htmlspecialchars($row['name']) ?></td>
-      <td><?= htmlspecialchars($row['ward'] ?? '') ?></td>
-      <td><?= htmlspecialchars($row['role']) ?></td>
-      <td class="actions">
-        <a href="candidates.php?edit=<?= (int) $row['id'] ?>">Edit</a>
-        <form method="post" onsubmit="return confirm('Remove this candidate?');" style="display:inline;">
-          <input type="hidden" name="action" value="delete">
-          <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
-          <button type="submit" class="delete" style="background:none;border:none;padding:0;font:inherit;cursor:pointer;">Delete</button>
-        </form>
-      </td>
-    </tr>
-    <?php endwhile; ?>
-  </table>
-</div>
+<?php if ($editRow): ?>
+<script>document.getElementById('candidateModal').showModal();</script>
+<?php endif; ?>
+
 <?php include __DIR__ . '/_chrome_bottom.php'; ?>

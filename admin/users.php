@@ -78,45 +78,11 @@ include __DIR__ . '/_chrome_top.php';
     : "The PAC Johannesburg team. Only admins can add, edit or remove accounts." ?>
 </p>
 
-<?php if ($amAdmin): ?>
 <div class="panel">
-  <h2>Add User</h2>
-  <form class="stack" method="post">
-    <input type="hidden" name="action" value="create">
-    <div class="row-2">
-      <div class="field">
-        <label for="name">Name</label>
-        <input id="name" name="name" required>
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required>
-      </div>
-    </div>
-    <div class="row-2">
-      <div class="field">
-        <label for="position">Role / Position</label>
-        <input id="position" name="position" placeholder="e.g. Branch Secretary">
-      </div>
-      <div class="field">
-        <label for="role">Permission Level</label>
-        <select id="role" name="role">
-          <option value="member">Member (can edit site content)</option>
-          <option value="admin">Admin (can also manage users)</option>
-        </select>
-      </div>
-    </div>
-    <div class="field">
-      <label for="password">Password (leave blank to auto-generate one)</label>
-      <input id="password" name="password" type="text">
-    </div>
-    <div><button class="btn" type="submit">Create User</button></div>
-  </form>
-</div>
-<?php endif; ?>
-
-<div class="panel">
-  <h2>All Users</h2>
+  <div class="panel-head">
+    <h2>All Users</h2>
+    <?php if ($amAdmin): ?><button type="button" class="btn" onclick="document.getElementById('userModal').showModal()">+ Add User</button><?php endif; ?>
+  </div>
   <table class="list">
     <tr><th></th><th>Name</th><th>Position</th><th>Email</th><th>Permission</th><?php if ($amAdmin): ?><th></th><?php endif; ?></tr>
     <?php while ($row = mysqli_fetch_assoc($rows)): ?>
@@ -125,7 +91,7 @@ include __DIR__ . '/_chrome_top.php';
         <?php if ($row['profile_image']): ?>
           <img class="thumb" style="border-radius:50%;" src="../<?= htmlspecialchars($row['profile_image']) ?>" alt="">
         <?php else: ?>
-          <div style="width:40px;height:40px;border-radius:50%;background:#eee;display:flex;align-items:center;justify-content:center;font-weight:700;color:#888;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--green-950);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gold);">
             <?= htmlspecialchars(strtoupper(substr($row['name'], 0, 1))) ?>
           </div>
         <?php endif; ?>
@@ -160,4 +126,48 @@ include __DIR__ . '/_chrome_top.php';
     <?php endwhile; ?>
   </table>
 </div>
+
+<?php if ($amAdmin): ?>
+<dialog id="userModal" class="modal">
+  <div class="modal-head">
+    <h2>Add User</h2>
+    <button type="button" class="modal-close" onclick="document.getElementById('userModal').close()" aria-label="Close">&times;</button>
+  </div>
+  <form class="stack" method="post">
+    <input type="hidden" name="action" value="create">
+    <div class="row-2">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+    </div>
+    <div class="row-2">
+      <div class="field">
+        <label for="position">Role / Position</label>
+        <input id="position" name="position" placeholder="e.g. Branch Secretary">
+      </div>
+      <div class="field">
+        <label for="role">Permission Level</label>
+        <select id="role" name="role">
+          <option value="member">Member (can edit site content)</option>
+          <option value="admin">Admin (can also manage users)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="password">Password (leave blank to auto-generate one)</label>
+      <input id="password" name="password" type="text">
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn" type="submit">Create User</button>
+      <button type="button" class="btn secondary" onclick="document.getElementById('userModal').close()">Cancel</button>
+    </div>
+  </form>
+</dialog>
+<?php endif; ?>
+
 <?php include __DIR__ . '/_chrome_bottom.php'; ?>

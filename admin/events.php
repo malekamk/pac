@@ -58,7 +58,36 @@ include __DIR__ . '/_chrome_top.php';
 <p class="subtitle">Shown on the public Events page and homepage, ordered by date.</p>
 
 <div class="panel">
-  <h2><?= $editRow ? 'Edit Event' : 'Add Event' ?></h2>
+  <div class="panel-head">
+    <h2>All Events</h2>
+    <button type="button" class="btn" onclick="document.getElementById('eventModal').showModal()">+ Add Event</button>
+  </div>
+  <table class="list">
+    <tr><th></th><th>Title</th><th>Date</th><th>Venue</th><th></th></tr>
+    <?php while ($row = mysqli_fetch_assoc($rows)): ?>
+    <tr>
+      <td><?php if ($row['image']): ?><img class="thumb" src="../<?= htmlspecialchars($row['image']) ?>" alt=""><?php endif; ?></td>
+      <td><?= htmlspecialchars($row['title']) ?> <?php if ($row['featured']): ?><span class="badge">Featured</span><?php endif; ?></td>
+      <td><?= htmlspecialchars(date('d M Y', strtotime($row['event_date']))) ?></td>
+      <td><?= htmlspecialchars($row['venue'] ?? '') ?></td>
+      <td class="actions">
+        <a href="events.php?edit=<?= (int) $row['id'] ?>">Edit</a>
+        <form method="post" onsubmit="return confirm('Delete this event?');" style="display:inline;">
+          <input type="hidden" name="action" value="delete">
+          <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
+          <button type="submit" class="delete" style="background:none;border:none;padding:0;font:inherit;cursor:pointer;">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <?php endwhile; ?>
+  </table>
+</div>
+
+<dialog id="eventModal" class="modal">
+  <div class="modal-head">
+    <h2><?= $editRow ? 'Edit Event' : 'Add Event' ?></h2>
+    <button type="button" class="modal-close" onclick="document.getElementById('eventModal').close()" aria-label="Close">&times;</button>
+  </div>
   <form class="stack" method="post" enctype="multipart/form-data">
     <input type="hidden" name="action" value="<?= $editRow ? 'update' : 'create' ?>">
     <?php if ($editRow): ?><input type="hidden" name="id" value="<?= (int) $editRow['id'] ?>"><?php endif; ?>
@@ -97,31 +126,13 @@ include __DIR__ . '/_chrome_top.php';
 
     <div style="display:flex;gap:10px;">
       <button class="btn" type="submit"><?= $editRow ? 'Save Changes' : 'Add Event' ?></button>
-      <?php if ($editRow): ?><a class="btn secondary" href="events.php">Cancel</a><?php endif; ?>
+      <button type="button" class="btn secondary" onclick="window.location.href='events.php'">Cancel</button>
     </div>
   </form>
-</div>
+</dialog>
 
-<div class="panel">
-  <h2>All Events</h2>
-  <table class="list">
-    <tr><th></th><th>Title</th><th>Date</th><th>Venue</th><th></th></tr>
-    <?php while ($row = mysqli_fetch_assoc($rows)): ?>
-    <tr>
-      <td><?php if ($row['image']): ?><img class="thumb" src="../<?= htmlspecialchars($row['image']) ?>" alt=""><?php endif; ?></td>
-      <td><?= htmlspecialchars($row['title']) ?> <?php if ($row['featured']): ?><span class="badge">Featured</span><?php endif; ?></td>
-      <td><?= htmlspecialchars(date('d M Y', strtotime($row['event_date']))) ?></td>
-      <td><?= htmlspecialchars($row['venue'] ?? '') ?></td>
-      <td class="actions">
-        <a href="events.php?edit=<?= (int) $row['id'] ?>">Edit</a>
-        <form method="post" onsubmit="return confirm('Delete this event?');" style="display:inline;">
-          <input type="hidden" name="action" value="delete">
-          <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
-          <button type="submit" class="delete" style="background:none;border:none;padding:0;font:inherit;cursor:pointer;">Delete</button>
-        </form>
-      </td>
-    </tr>
-    <?php endwhile; ?>
-  </table>
-</div>
+<?php if ($editRow): ?>
+<script>document.getElementById('eventModal').showModal();</script>
+<?php endif; ?>
+
 <?php include __DIR__ . '/_chrome_bottom.php'; ?>
