@@ -26,11 +26,16 @@ jobs:
             --exclude='README*' \
             ./ deploy/
 
-      - name: Ensure remote directories exist
+      # The SFTP action's local_path glob (deploy/*) does not match dotfiles,
+      # so .htaccess would silently never upload. Create remote directories
+      # and push .htaccess explicitly here before the main upload runs.
+      - name: Ensure remote directories exist & upload .htaccess
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
           REMOTE_DIRS="admin assets assets/img assets/img/uploads css js partials"
           BATCH=$(for d in $REMOTE_DIRS; do echo "-mkdir ${{ secrets.XNEELO_FTP_TARGET_DIR }}$d"; done)
+          BATCH="$BATCH
+          put deploy/.htaccess ${{ secrets.XNEELO_FTP_TARGET_DIR }}.htaccess"
           echo "$BATCH" | sshpass -p "${{ secrets.XNEELO_FTP_PASSWORD }}" \
             sftp -o StrictHostKeyChecking=no -P 22 \
             "${{ secrets.XNEELO_FTP_USERNAME }}@${{ secrets.XNEELO_FTP_SERVER }}"
