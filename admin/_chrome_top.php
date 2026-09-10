@@ -19,6 +19,12 @@
     <a href="announcements.php">Announcements</a>
     <a href="candidates.php">Candidates</a>
     <a href="users.php">Users</a>
+    <a href="profile.php" style="display:flex;align-items:center;gap:6px;">
+      <?php if (!empty($_SESSION['admin_image'])): ?>
+        <img src="../<?= htmlspecialchars($_SESSION['admin_image']) ?>" alt="" style="width:22px;height:22px;border-radius:50%;object-fit:cover;">
+      <?php endif; ?>
+      <?= htmlspecialchars($_SESSION['admin_name'] ?? 'My Profile') ?>
+    </a>
     <a href="logout.php" class="logout">Log out</a>
   </nav>
 </header>

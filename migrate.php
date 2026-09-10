@@ -8,6 +8,9 @@ $tables = [
     name VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
+    role ENUM('admin','member') NOT NULL DEFAULT 'member',
+    position VARCHAR(150) NULL,
+    profile_image VARCHAR(255) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
 
@@ -58,7 +61,7 @@ function count_rows($conn, $table) {
 
 if (count_rows($conn, 'admins') === 0) {
   $hash = password_hash('PacJhb2026!', PASSWORD_DEFAULT);
-  $stmt = mysqli_prepare($conn, "INSERT INTO admins (name, email, password_hash) VALUES (?, ?, ?)");
+  $stmt = mysqli_prepare($conn, "INSERT INTO admins (name, email, password_hash, role) VALUES (?, ?, ?, 'admin')");
   mysqli_stmt_bind_param($stmt, 'sss', $name, $email, $hash);
   $name = 'PAC Johannesburg Admin';
   $email = 'admin@pacjhb.org.za';

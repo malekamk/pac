@@ -3,6 +3,9 @@ CREATE TABLE IF NOT EXISTS admins (
   name VARCHAR(100) NOT NULL,
   email VARCHAR(150) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
+  role ENUM('admin','member') NOT NULL DEFAULT 'member',
+  position VARCHAR(150) NULL,
+  profile_image VARCHAR(255) NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,8 +41,8 @@ CREATE TABLE IF NOT EXISTS candidates (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Initial admin login: admin@pacjhb.org.za / PacJhb2026!  (change after first login)
-INSERT INTO admins (name, email, password_hash) VALUES
-('PAC Johannesburg Admin', 'admin@pacjhb.org.za', '$2y$12$fh10vbYjCydo7auus3zsK.Idk2ICSlsa0TcP3cJD5Duq7uRBfMvtu');
+INSERT INTO admins (name, email, password_hash, role) VALUES
+('PAC Johannesburg Admin', 'admin@pacjhb.org.za', '$2y$12$fh10vbYjCydo7auus3zsK.Idk2ICSlsa0TcP3cJD5Duq7uRBfMvtu', 'admin');
 
 INSERT INTO events (title, event_date, event_time, venue, description, image, featured) VALUES
 ('Raboroko Branch (Naledi) Car Wash & Fundraiser', '2026-09-24', '10:00 till late', 'Park next to Naledi High School',

@@ -30,6 +30,10 @@ function db() {
   return $conn;
 }
 
+function is_admin() {
+  return ($_SESSION['admin_role'] ?? null) === 'admin';
+}
+
 // Handles an optional <input type="file">, returns the stored relative path or null.
 function handle_upload($field) {
   if (empty($_FILES[$field]['name']) || $_FILES[$field]['error'] !== UPLOAD_ERR_OK) {

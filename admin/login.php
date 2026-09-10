@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = trim($_POST['email'] ?? '');
   $password = $_POST['password'] ?? '';
 
-  $stmt = mysqli_prepare(db(), "SELECT id, name, password_hash FROM admins WHERE email = ?");
+  $stmt = mysqli_prepare(db(), "SELECT id, name, password_hash, role, profile_image FROM admins WHERE email = ?");
   mysqli_stmt_bind_param($stmt, 's', $email);
   mysqli_stmt_execute($stmt);
   $result = mysqli_stmt_get_result($stmt);
@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_regenerate_id(true);
     $_SESSION['admin_id'] = $admin['id'];
     $_SESSION['admin_name'] = $admin['name'];
+    $_SESSION['admin_role'] = $admin['role'];
+    $_SESSION['admin_image'] = $admin['profile_image'];
     header('Location: index.php');
     exit;
   }
