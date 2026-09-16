@@ -43,8 +43,10 @@ $homeEvents = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM events ORDER B
   "logo": "https://pacjhb.org.za/assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png",
   "sameAs": [
     "https://www.pacofazania.org.za/",
-    "https://www.facebook.com/MyPAConline/",
-    "https://x.com/mypaconline"
+    "https://www.facebook.com/people/Pac-Jhb/61593735309063",
+    "https://x.com/PACjhb",
+    "https://www.instagram.com/pacjhb/",
+    "https://www.tiktok.com/@pac_jhb"
   ],
   "address": {
     "@type": "PostalAddress",

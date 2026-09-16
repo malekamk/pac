@@ -50,7 +50,7 @@
           </div>
           <div class="contact-info-item">
             <span class="ic">&#128279;</span>
-            <div><strong>Social</strong><span><a href="https://www.facebook.com/MyPAConline/" target="_blank" rel="noopener">Facebook</a> &middot; <a href="https://x.com/mypaconline" target="_blank" rel="noopener">X / Twitter</a></span></div>
+            <div><strong>Social</strong><span><a href="https://www.facebook.com/people/Pac-Jhb/61593735309063" target="_blank" rel="noopener">Facebook</a> &middot; <a href="https://x.com/PACjhb" target="_blank" rel="noopener">X / Twitter</a> &middot; <a href="https://www.instagram.com/pacjhb/" target="_blank" rel="noopener">Instagram</a> &middot; <a href="https://www.tiktok.com/@pac_jhb" target="_blank" rel="noopener">TikTok</a></span></div>
           </div>
         </div>
         <div class="map-frame">

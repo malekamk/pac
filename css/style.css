@@ -80,6 +80,7 @@ img{max-width:100%;display:block;}
 .social-facebook{background:#1877F2;}
 .social-x{background:#fff;color:#07100b;}
 .social-instagram{background:radial-gradient(circle at 30% 110%, #ffdb73 0%, #fd5949 30%, #d6249f 55%, #285AEB 90%);}
+.social-tiktok{background:#000;}
 
 /* ===== Header / nav ===== */
 header.site-header{background:var(--near-black);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
