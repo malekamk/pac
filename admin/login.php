@@ -42,22 +42,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
   <div class="login-wrap">
-    <div class="login-card">
-      <img src="/assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png" alt="">
-      <h1>PAC Johannesburg</h1>
-      <p class="subtitle">Admin sign in</p>
-      <?php if ($error): ?><div class="error"><?= htmlspecialchars($error) ?></div><?php endif; ?>
-      <form class="stack" method="post">
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required autofocus>
-        </div>
-        <div class="field">
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" required>
-        </div>
-        <button class="btn" type="submit">Log In</button>
-      </form>
+    <div class="login-shell">
+      <div class="login-hero">
+        <span class="eyebrow">PAC Johannesburg Region</span>
+        <h2>Serve. Suffer. Sacrifice.</h2>
+        <p>Manage events, news, candidates and the site's gallery from one place.</p>
+      </div>
+      <div class="login-card">
+        <img src="/assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png" alt="">
+        <h1>PAC Johannesburg</h1>
+        <p class="subtitle">Admin sign in</p>
+        <?php if ($error): ?><div class="error"><?= htmlspecialchars($error) ?></div><?php endif; ?>
+        <form class="stack" method="post">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autofocus>
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required>
+          </div>
+          <button class="btn" type="submit">Log In</button>
+        </form>
+      </div>
     </div>
     <p class="credit">Built by <a href="https://starapplications.co.za" target="_blank" rel="noopener">StarApplications</a></p>
   </div>
