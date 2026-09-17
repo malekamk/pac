@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['flash'] = 'Announcement updated.';
     }
   }
-  header('Location: announcements');
+  header('Location: /admin/announcements');
   exit;
 }
 
@@ -49,36 +49,85 @@ if (isset($_GET['edit'])) {
 }
 
 $rows = mysqli_query($conn, "SELECT * FROM announcements ORDER BY published_at DESC, id DESC");
+$allRows = mysqli_fetch_all($rows, MYSQLI_ASSOC);
 
+$totalCount = count($allRows);
+$withImageCount = 0;
+$thisMonthCount = 0;
+$monthPrefix = date('Y-m');
+$latestDate = $allRows[0]['published_at'] ?? null;
+foreach ($allRows as $r) {
+  if ($r['image']) $withImageCount++;
+  if ($r['published_at'] && str_starts_with($r['published_at'], $monthPrefix)) $thisMonthCount++;
+}
+
+$addLabel = 'Add Announcement';
+$addModalId = 'announcementModal';
+$liveUrl = '/news';
 include __DIR__ . '/_chrome_top.php';
 ?>
 <h1>Announcements</h1>
-<p class="subtitle">The most recent one shows in the homepage Announcements banner.</p>
+<p class="subtitle">The most recent one shows in the homepage Announcements banner and News page.</p>
 
-<div class="panel">
-  <div class="panel-head">
-    <h2>All Announcements</h2>
-    <button type="button" class="btn" onclick="document.getElementById('announcementModal').showModal()">+ Add Announcement</button>
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-top"><span class="kpi-label">Total</span><span class="kpi-icon"><?= admin_icon('megaphone') ?></span></div>
+    <div class="kpi-value"><?= $totalCount ?></div>
+    <div class="kpi-caption">All announcements</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-top"><span class="kpi-label">This Month</span><span class="kpi-icon"><?= admin_icon('calendar') ?></span></div>
+    <div class="kpi-value"><?= $thisMonthCount ?></div>
+    <div class="kpi-caption">Published in <?= date('F') ?></div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-top"><span class="kpi-label">With Photos</span><span class="kpi-icon"><?= admin_icon('image') ?></span></div>
+    <div class="kpi-value"><?= $withImageCount ?></div>
+    <div class="kpi-caption">Have a cover image</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-top"><span class="kpi-label">Latest</span><span class="kpi-icon"><?= admin_icon('flag') ?></span></div>
+    <div class="kpi-value" style="font-size:1.1rem;"><?= $latestDate ? htmlspecialchars(date('d M', strtotime($latestDate))) : '—' ?></div>
+    <div class="kpi-caption">Most recent post</div>
+  </div>
+</div>
+
+<div class="data-card">
+  <div class="data-toolbar">
+    <div class="data-search"><?= admin_icon('search') ?><input type="text" placeholder="Search announcements..." disabled></div>
+    <div class="data-toolbar-actions">
+      <button type="button" class="pill-btn" disabled><?= admin_icon('filter') ?> Filter</button>
+      <button type="button" class="pill-btn" disabled><?= admin_icon('download') ?> Export</button>
+    </div>
   </div>
   <table class="list">
-    <tr><th></th><th>Title</th><th>Tag</th><th>Date</th><th></th></tr>
-    <?php while ($row = mysqli_fetch_assoc($rows)): ?>
+    <tr><th></th><th></th><th>Title</th><th>Tag</th><th>Date</th><th></th></tr>
+    <?php foreach ($allRows as $row): ?>
     <tr>
-      <td><?php if ($row['image']): ?><img class="thumb" src="../<?= htmlspecialchars($row['image']) ?>" alt=""><?php endif; ?></td>
+      <td><input type="checkbox"></td>
+      <td><?php if ($row['image']): ?><img class="thumb" src="/<?= htmlspecialchars($row['image']) ?>" alt=""><?php endif; ?></td>
       <td><?= htmlspecialchars($row['title']) ?></td>
       <td><span class="badge"><?= htmlspecialchars($row['tag']) ?></span></td>
       <td><?= htmlspecialchars($row['published_at'] ? date('d M Y', strtotime($row['published_at'])) : '') ?></td>
       <td class="actions">
-        <a href="announcements?edit=<?= (int) $row['id'] ?>">Edit</a>
+        <a href="/admin/announcements?edit=<?= (int) $row['id'] ?>" aria-label="Edit"><?= admin_icon('pencil') ?></a>
         <form method="post" onsubmit="return confirm('Delete this announcement?');" style="display:inline;">
           <input type="hidden" name="action" value="delete">
           <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
-          <button type="submit" class="delete" style="background:none;border:none;padding:0;font:inherit;cursor:pointer;">Delete</button>
+          <button type="submit" class="delete" aria-label="Delete"><?= admin_icon('trash') ?></button>
         </form>
       </td>
     </tr>
-    <?php endwhile; ?>
+    <?php endforeach; ?>
   </table>
+  <div class="data-footer">
+    <span class="count">Showing all <?= $totalCount ?> announcement<?= $totalCount === 1 ? '' : 's' ?></span>
+    <div class="pagination">
+      <span><?= admin_icon('chevron-left') ?></span>
+      <span class="active">1</span>
+      <span><?= admin_icon('chevron-right') ?></span>
+    </div>
+  </div>
 </div>
 
 <dialog id="announcementModal" class="modal">
@@ -111,12 +160,12 @@ include __DIR__ . '/_chrome_top.php';
     <div class="field">
       <label for="image">Cover image</label>
       <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png,.webp">
-      <?php if (!empty($editRow['image'])): ?><img class="thumb" src="../<?= htmlspecialchars($editRow['image']) ?>" alt=""><?php endif; ?>
+      <?php if (!empty($editRow['image'])): ?><img class="thumb" src="/<?= htmlspecialchars($editRow['image']) ?>" alt=""><?php endif; ?>
     </div>
 
     <div style="display:flex;gap:10px;">
       <button class="btn" type="submit"><?= $editRow ? 'Save Changes' : 'Add Announcement' ?></button>
-      <button type="button" class="btn secondary" onclick="window.location.href='announcements'">Cancel</button>
+      <button type="button" class="btn secondary" onclick="window.location.href='/admin/announcements'">Cancel</button>
     </div>
   </form>
 </dialog>

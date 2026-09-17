@@ -1,21 +1,21 @@
 /* PAC Johannesburg Region — shared styles */
 
 :root{
-  --black:#07100b;
-  --near-black:#0b1710;
+  --black:#008811;
+  --near-black:#007a10;
   --green-brand:#0b8f3c;
-  --green-950:#063d20;
-  --green-900:#075a2d;
-  --green-800:#08733a;
-  --green-700:#0a9146;
-  --gold:#d9a92e;
-  --gold-light:#f7d878;
-  --gold-dim:#b58b26;
+  --green-950:#004d08;
+  --green-900:#006010;
+  --green-800:#007a10;
+  --green-700:#009f14;
+  --gold:#ffc901;
+  --gold-light:#ffdc4d;
+  --gold-dim:#cc9f01;
   --cream:#f5f3ec;
   --gray-300:#cbd3cd;
   --gray-500:#87958c;
   --border:rgba(255,255,255,0.11);
-  --border-hover:rgba(217,169,46,0.55);
+  --border-hover:rgba(255,201,1,0.55);
   --radius:12px;
   --maxw:1240px;
   font-size:16px;
@@ -53,7 +53,7 @@ img{max-width:100%;display:block;}
 }
 .btn{
   display:inline-flex;align-items:center;gap:8px;
-  padding:13px 26px;border-radius:4px;
+  padding:13px 26px;border-radius:999px;
   font-weight:700;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;
   border:2px solid transparent;cursor:pointer;transition:all .2s ease;
 }
@@ -65,10 +65,10 @@ img{max-width:100%;display:block;}
 .btn-green:hover{background:var(--green-700);}
 
 /* ===== Top bar ===== */
-.topbar{background:#050605;font-size:.8rem;color:var(--gray-500);}
+.topbar{background:var(--green-950);font-size:.8rem;color:var(--gray-300);}
 .topbar .container{display:flex;justify-content:space-between;align-items:center;padding:8px 24px;flex-wrap:wrap;gap:6px;}
 .topbar-info{display:flex;gap:20px;flex-wrap:wrap;}
-.topbar-info a{color:var(--gray-500);}
+.topbar-info a{color:var(--gray-300);}
 .topbar-info a:hover{color:var(--gold);}
 .topbar-social{display:flex;align-items:center;gap:9px;}
 .social-icon{
@@ -280,7 +280,7 @@ nav.main-nav a:hover,nav.main-nav a.active{color:var(--gold);border-bottom-color
 .event-row:hover{border-color:var(--border-hover);}
 .event-row .thumb{width:56px;height:56px;border-radius:6px;overflow:hidden;flex-shrink:0;}
 .event-row .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-.date-badge{background:var(--green-800);border:1px solid var(--border);border-radius:6px;min-width:64px;text-align:center;padding:8px 4px;flex-shrink:0;}
+.date-badge{background:var(--green-800);border:1px solid var(--border);border-radius:10px;min-width:64px;text-align:center;padding:8px 4px;flex-shrink:0;}
 .date-badge .d{color:#fff;font-size:1.3rem;font-weight:700;font-family:Georgia,serif;}
 .date-badge .m{color:var(--gold);font-size:.68rem;text-transform:uppercase;letter-spacing:1px;}
 .event-info h4{color:#fff;font-size:.95rem;margin:0 0 4px;}
@@ -323,7 +323,7 @@ nav.main-nav a:hover,nav.main-nav a.active{color:var(--gold);border-bottom-color
 }
 @media (max-width:700px){.feature-leader{grid-template-columns:1fr;}}
 .feature-leader .avatar{border-radius:8px;border-bottom:none;aspect-ratio:1/1;}
-.feature-leader .tag{display:inline-block;background:var(--gold);color:var(--black);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:3px;margin-bottom:10px;}
+.feature-leader .tag{display:inline-block;background:var(--gold);color:var(--black);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px;}
 
 /* ===== Footer ===== */
 footer.site-footer{position:relative;border-top:4px solid var(--gold);}
@@ -394,7 +394,7 @@ footer.site-footer{position:relative;border-top:4px solid var(--gold);}
 .announcement-banner .tag{
   display:inline-flex;align-items:center;gap:6px;background:#e0453a;color:#fff;
   font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  padding:4px 10px;border-radius:3px;margin-bottom:10px;
+  padding:4px 10px;border-radius:999px;margin-bottom:10px;
 }
 .announcement-banner .tag::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block;}
 .announcement-banner h2{font-size:1.5rem;}
@@ -407,7 +407,7 @@ footer.site-footer{position:relative;border-top:4px solid var(--gold);}
 }
 @media (max-width:700px){.featured-event{grid-template-columns:1fr;}}
 .featured-event img{width:100%;border-radius:8px;display:block;}
-.featured-event .tag{display:inline-block;background:var(--gold);color:var(--black);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:3px;margin-bottom:10px;}
+.featured-event .tag{display:inline-block;background:var(--gold);color:var(--black);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px;}
 .featured-event blockquote{margin:14px 0 0;padding-left:14px;border-left:2px solid var(--border);color:var(--gray-300);font-style:italic;font-size:.9rem;}
 
 /* ===== Ward Candidates ===== */
@@ -419,7 +419,11 @@ footer.site-footer{position:relative;border-top:4px solid var(--gold);}
 .candidate-card .poster{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;}
 .candidate-card .cap{padding:16px 18px;}
 .candidate-card .cap h3{font-size:1.05rem;margin-bottom:4px;}
-.candidate-card .cap .ward{color:var(--gold);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.candidate-card .cap .ward{
+  display:inline-block;background:var(--green-800);border:1px solid var(--border);
+  color:var(--gold);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  padding:3px 10px;border-radius:999px;margin-bottom:6px;
+}
 
 /* ===== Forms ===== */
 form.card-form{background:var(--near-black);border:1px solid var(--border);border-radius:var(--radius);padding:28px;}
@@ -457,11 +461,11 @@ form.card-form{background:var(--near-black);border:1px solid var(--border);borde
   --shadow-sm:0 4px 14px rgba(0,0,0,.18);
   --shadow-md:0 12px 30px rgba(0,0,0,.24);
   --shadow-lg:0 22px 55px rgba(0,0,0,.32);
-  --gold-glow:rgba(217,169,46,.16);
+  --gold-glow:rgba(255,201,1,.16);
   --green-glow:rgba(10,145,70,.16);
-  --surface-1:#0b1710;
-  --surface-2:#0f1d15;
-  --surface-3:#13241a;
+  --surface-1:#007a10;
+  --surface-2:#006d0e;
+  --surface-3:#005f0c;
 }
 
 ::selection{background:var(--gold);color:var(--black);}

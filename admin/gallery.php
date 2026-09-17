@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['flash'] = 'Photo updated.';
     }
   }
-  header('Location: gallery');
+  header('Location: /admin/gallery');
   exit;
 }
 
@@ -52,36 +52,78 @@ if (isset($_GET['edit'])) {
 }
 
 $rows = mysqli_query($conn, "SELECT * FROM gallery_images ORDER BY sort_order ASC, id ASC");
+$allRows = mysqli_fetch_all($rows, MYSQLI_ASSOC);
 
+$totalCount = count($allRows);
+$coverCount = 0;
+$containCount = 0;
+foreach ($allRows as $r) {
+  if ($r['display_mode'] === 'cover') $coverCount++;
+  if ($r['display_mode'] === 'contain') $containCount++;
+}
+
+$addLabel = 'Add Photo';
+$addModalId = 'galleryModal';
+$liveUrl = '/gallery';
 include __DIR__ . '/_chrome_top.php';
 ?>
 <h1>Gallery</h1>
 <p class="subtitle">Shown on the public Gallery page, ordered by the sort number below (lowest first).</p>
 
-<div class="panel">
-  <div class="panel-head">
-    <h2>All Photos</h2>
-    <button type="button" class="btn" onclick="document.getElementById('galleryModal').showModal()">+ Add Photo</button>
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-top"><span class="kpi-label">Total Photos</span><span class="kpi-icon"><?= admin_icon('images') ?></span></div>
+    <div class="kpi-value"><?= $totalCount ?></div>
+    <div class="kpi-caption">In the gallery</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-top"><span class="kpi-label">Cover Mode</span><span class="kpi-icon"><?= admin_icon('image') ?></span></div>
+    <div class="kpi-value"><?= $coverCount ?></div>
+    <div class="kpi-caption">Fill the tile</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-top"><span class="kpi-label">Contain Mode</span><span class="kpi-icon"><?= admin_icon('grid') ?></span></div>
+    <div class="kpi-value"><?= $containCount ?></div>
+    <div class="kpi-caption">Whole image shown</div>
+  </div>
+</div>
+
+<div class="data-card">
+  <div class="data-toolbar">
+    <div class="data-search"><?= admin_icon('search') ?><input type="text" placeholder="Search photos..." disabled></div>
+    <div class="data-toolbar-actions">
+      <button type="button" class="pill-btn" disabled><?= admin_icon('filter') ?> Filter</button>
+      <button type="button" class="pill-btn" disabled><?= admin_icon('download') ?> Export</button>
+    </div>
   </div>
   <table class="list">
-    <tr><th></th><th>Caption</th><th>Display</th><th>Sort</th><th></th></tr>
-    <?php while ($row = mysqli_fetch_assoc($rows)): ?>
+    <tr><th></th><th></th><th>Caption</th><th>Display</th><th>Sort</th><th></th></tr>
+    <?php foreach ($allRows as $row): ?>
     <tr>
-      <td><?php if ($row['image']): ?><img class="thumb" src="../<?= htmlspecialchars($row['image']) ?>" alt=""><?php endif; ?></td>
+      <td><input type="checkbox"></td>
+      <td><?php if ($row['image']): ?><img class="thumb" src="/<?= htmlspecialchars($row['image']) ?>" alt=""><?php endif; ?></td>
       <td><?= htmlspecialchars($row['caption'] ?? '') ?></td>
-      <td><span class="badge"><?= htmlspecialchars($row['display_mode']) ?></span></td>
+      <td><span class="badge badge-gray"><?= htmlspecialchars($row['display_mode']) ?></span></td>
       <td><?= (int) $row['sort_order'] ?></td>
       <td class="actions">
-        <a href="gallery?edit=<?= (int) $row['id'] ?>">Edit</a>
+        <a href="/admin/gallery?edit=<?= (int) $row['id'] ?>" aria-label="Edit"><?= admin_icon('pencil') ?></a>
         <form method="post" onsubmit="return confirm('Remove this photo?');" style="display:inline;">
           <input type="hidden" name="action" value="delete">
           <input type="hidden" name="id" value="<?= (int) $row['id'] ?>">
-          <button type="submit" class="delete" style="background:none;border:none;padding:0;font:inherit;cursor:pointer;">Delete</button>
+          <button type="submit" class="delete" aria-label="Delete"><?= admin_icon('trash') ?></button>
         </form>
       </td>
     </tr>
-    <?php endwhile; ?>
+    <?php endforeach; ?>
   </table>
+  <div class="data-footer">
+    <span class="count">Showing all <?= $totalCount ?> photo<?= $totalCount === 1 ? '' : 's' ?></span>
+    <div class="pagination">
+      <span><?= admin_icon('chevron-left') ?></span>
+      <span class="active">1</span>
+      <span><?= admin_icon('chevron-right') ?></span>
+    </div>
+  </div>
 </div>
 
 <dialog id="galleryModal" class="modal">
@@ -96,7 +138,7 @@ include __DIR__ . '/_chrome_top.php';
     <div class="field">
       <label for="image">Photo</label>
       <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png,.webp"<?= $editRow ? '' : ' required' ?>>
-      <?php if (!empty($editRow['image'])): ?><img class="thumb" src="../<?= htmlspecialchars($editRow['image']) ?>" alt=""><?php endif; ?>
+      <?php if (!empty($editRow['image'])): ?><img class="thumb" src="/<?= htmlspecialchars($editRow['image']) ?>" alt=""><?php endif; ?>
     </div>
     <div class="field">
       <label for="caption">Caption</label>
@@ -120,7 +162,7 @@ include __DIR__ . '/_chrome_top.php';
 
     <div style="display:flex;gap:10px;">
       <button class="btn" type="submit"><?= $editRow ? 'Save Changes' : 'Add Photo' ?></button>
-      <button type="button" class="btn secondary" onclick="window.location.href='gallery'">Cancel</button>
+      <button type="button" class="btn secondary" onclick="window.location.href='/admin/gallery'">Cancel</button>
     </div>
   </form>
 </dialog>

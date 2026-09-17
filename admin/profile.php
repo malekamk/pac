@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['admin_name'] = $name;
     if ($uploaded) $_SESSION['admin_image'] = $uploaded;
     $_SESSION['flash'] = 'Profile updated.';
-    header('Location: profile');
+    header('Location: /admin/profile');
     exit;
   }
 
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       mysqli_stmt_bind_param($stmt, 'si', $hash, $_SESSION['admin_id']);
       mysqli_stmt_execute($stmt);
       $_SESSION['flash'] = 'Password changed.';
-      header('Location: profile');
+      header('Location: /admin/profile');
       exit;
     }
   }
@@ -67,7 +67,7 @@ include __DIR__ . '/_chrome_top.php';
   <h2>Profile Details</h2>
   <form class="stack" method="post" enctype="multipart/form-data">
     <input type="hidden" name="action" value="update_profile">
-    <?php if ($me['profile_image']): ?><img class="thumb" style="width:72px;height:72px;" src="../<?= htmlspecialchars($me['profile_image']) ?>" alt=""><?php endif; ?>
+    <?php if ($me['profile_image']): ?><img class="thumb" style="width:72px;height:72px;border-radius:50%;" src="/<?= htmlspecialchars($me['profile_image']) ?>" alt=""><?php endif; ?>
     <div class="field">
       <label for="profile_image">Profile photo</label>
       <input id="profile_image" name="profile_image" type="file" accept=".jpg,.jpeg,.png,.webp">

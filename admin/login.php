@@ -3,7 +3,7 @@ require __DIR__ . '/../config.php';
 session_start();
 
 if (!empty($_SESSION['admin_id'])) {
-  header('Location: index');
+  header('Location: /admin/index');
   exit;
 }
 
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['admin_name'] = $admin['name'];
     $_SESSION['admin_role'] = $admin['role'];
     $_SESSION['admin_image'] = $admin['profile_image'];
-    header('Location: index');
+    header('Location: /admin/index');
     exit;
   }
   $error = 'Incorrect email or password.';
@@ -37,13 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Log In | PAC Johannesburg Admin</title>
-<link rel="icon" href="../assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png" type="image/png">
-<link rel="stylesheet" href="admin.css">
+<link rel="icon" href="/assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png" type="image/png">
+<link rel="stylesheet" href="/admin/admin.css">
 </head>
 <body>
   <div class="login-wrap">
     <div class="login-card">
-      <img src="../assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png" alt="">
+      <img src="/assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png" alt="">
       <h1>PAC Johannesburg</h1>
       <p class="subtitle">Admin sign in</p>
       <?php if ($error): ?><div class="error"><?= htmlspecialchars($error) ?></div><?php endif; ?>
