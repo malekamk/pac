@@ -57,6 +57,6 @@
     </div>
   </div>
   <div class="footer-bottom">
-    Copyright <span data-year></span> Pan Africanist Congress Azania. All Rights Reserved. | <a href="contact">Admin</a>
+    Copyright <span data-year></span> Pan Africanist Congress Azania. All Rights Reserved. | <a href="/admin">Admin</a>
   </div>
 </footer>
