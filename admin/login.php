@@ -42,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
   <div class="login-wrap">
-    <div class="login-shell">
-      <div class="login-hero">
-        <span class="eyebrow">PAC Johannesburg Region</span>
-        <h2>Serve. Suffer. Sacrifice.</h2>
-        <p>Manage events, news, candidates and the site's gallery from one place.</p>
-      </div>
-      <div class="login-card">
+    <div class="login-hero">
+      <span class="eyebrow">PAC Johannesburg Region</span>
+      <h2>Serve. Suffer. Sacrifice.</h2>
+      <p>Manage events, news, candidates and the site's gallery from one place.</p>
+    </div>
+    <div class="login-card">
+      <div class="login-card-inner">
         <img src="/assets/img/1200px-Pan_Africanist_Congress_of_Azania_logo.svg_.png" alt="">
         <h1>PAC Johannesburg</h1>
         <p class="subtitle">Admin sign in</p>
