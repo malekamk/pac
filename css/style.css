@@ -235,7 +235,9 @@ nav.main-nav a:hover,nav.main-nav a.active{color:var(--gold);border-bottom-color
   border-radius:24px;overflow:hidden;
   background:var(--surface-1);border:1px solid var(--border);
   display:flex;align-items:stretch;
+  transition:transform .18s, border-color .18s;
 }
+.feature-main:hover{border-color:var(--border-hover);transform:translateY(-3px);}
 .feature-main .thumb{width:38%;flex:none;overflow:hidden;background:var(--surface-2);}
 .feature-main .thumb img{width:100%;height:100%;object-fit:contain;display:block;}
 .feature-main-body{flex:1;min-width:0;padding:30px 32px;display:flex;flex-direction:column;gap:12px;}
@@ -256,7 +258,8 @@ nav.main-nav a:hover,nav.main-nav a.active{color:var(--gold);border-bottom-color
 }
 
 .feature-list{display:flex;flex-direction:column;gap:18px;}
-.feature-list-row{display:flex;gap:12px;align-items:flex-start;}
+.feature-list-row{display:flex;gap:12px;align-items:flex-start;padding:8px;border-radius:12px;margin:0 -8px;transition:background .15s ease;}
+.feature-list-row:hover{background:var(--surface-2);}
 .feature-list-row .thumb{width:66px;height:66px;border-radius:10px;overflow:hidden;flex:none;background:var(--surface-2);border:1px solid var(--border);}
 .feature-list-row .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .feature-list-row .meta{font-size:.66rem;color:var(--gold-dim);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;}
@@ -495,6 +498,7 @@ textarea:focus-visible{
 .leader-card,
 .leadership-panel,
 .feature-leader,
+.feature-main,
 .stat,
 .gallery-item,
 .announcement-banner,
@@ -508,7 +512,8 @@ form.card-form,
 .card:hover,
 .event-row:hover,
 .leader-card:hover,
-.candidate-card:hover{
+.candidate-card:hover,
+.feature-main:hover{
   box-shadow:var(--shadow-md);
 }
 
