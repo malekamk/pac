@@ -321,7 +321,7 @@ form.stack{display:flex;flex-direction:column;gap:14px;}
   box-shadow:var(--shadow-md);
 }
 .login-hero{
-  flex:1;position:relative;min-width:0;color:#fff;
+  flex:0 0 50%;position:relative;min-width:0;color:#fff;
   background:
     linear-gradient(180deg, rgba(0,20,4,.15) 30%, rgba(0,20,4,.82) 100%),
     url("/assets/img/hero-pac-flags-crowd.png") center 30% / cover no-repeat;
@@ -331,7 +331,7 @@ form.stack{display:flex;flex-direction:column;gap:14px;}
 .login-hero h2{color:#fff;font-size:1.5rem;margin-bottom:6px;line-height:1.25;}
 .login-hero p{color:#e7ede8;font-size:.85rem;margin:0;}
 .login-card{
-  flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;
+  flex:0 0 50%;min-width:0;display:flex;flex-direction:column;justify-content:center;
   padding:40px;
 }
 .login-card img{width:52px;display:block;margin:0 auto 12px;}
